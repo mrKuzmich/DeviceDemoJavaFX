@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.7956043956043956" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="457.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.device.demo.Controller">
+<SplitPane dividerPositions="0.7956043956043956" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.device.demo.Controller">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
@@ -23,7 +23,7 @@
                               <Label layoutX="176.0" layoutY="14.0" text="Baud Rate" />
                               <ChoiceBox fx:id="cbComPort" layoutX="48.0" layoutY="10.0" prefHeight="23.0" prefWidth="106.0" />
                               <ChoiceBox fx:id="cbBaudRates" layoutX="236.0" layoutY="10.0" prefHeight="23.0" prefWidth="123.0" />
-                              <Button layoutX="519.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Acept &amp; Send" />
+                              <Button layoutX="519.0" layoutY="295.0" mnemonicParsing="false" onAction="#accept" prefHeight="25.0" prefWidth="104.0" text="Acept &amp; Send" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
@@ -227,7 +227,7 @@
                </font>
             </Button>
             <Label layoutX="7.0" prefHeight="17.0" prefWidth="94.0" text="Printer Request" textFill="#12078d" />
-            <TextField layoutX="7.0" layoutY="24.0" prefHeight="55.0" prefWidth="275.0" />
+            <TextField fx:id="tfPrinterRequest" layoutX="7.0" layoutY="24.0" prefHeight="55.0" prefWidth="275.0" />
             <TextField layoutX="297.0" layoutY="24.0" prefHeight="55.0" prefWidth="275.0" />
             <Label layoutX="297.0" prefHeight="15.0" prefWidth="73.0" text="Printer Status" textFill="#12078d" />
          </children>

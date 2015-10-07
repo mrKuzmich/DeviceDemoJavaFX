@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Java-Fiscal-Device-API" />
     <orderEntry type="library" name="gradle-wrapper" level="project" />
+    <orderEntry type="module" module-name="main" />
   </component>
 </module>

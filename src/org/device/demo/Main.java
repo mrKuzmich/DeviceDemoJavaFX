@@ -16,7 +16,7 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("GSXJavaFX.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Device Demo Application");
-        primaryStage.setScene(new Scene(root, 378, 340));
+        primaryStage.setScene(new Scene(root, 640, 500));
         primaryStage.show();
         Controller controller = loader.getController();
         controller.setFiscalPort(new FiscalPortMediator());
