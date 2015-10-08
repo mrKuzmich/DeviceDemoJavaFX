@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/DeviceDemoJavaFX.iml" filepath="$PROJECT_DIR$/DeviceDemoJavaFX.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/Java-Fiscal-Device-API.iml" filepath="$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/Java-Fiscal-Device-API.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/samples/src/main/Java-Fiscal-Device-API-Sample.iml" filepath="$PROJECT_DIR$/../Java-Fiscal-Device-API/samples/src/main/Java-Fiscal-Device-API-Sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/fiscal-device.iml" filepath="$PROJECT_DIR$/../Java-Fiscal-Device-API/fiscal-device.iml" />
     </modules>
   </component>
 </project>

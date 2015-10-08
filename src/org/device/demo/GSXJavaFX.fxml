@@ -31,23 +31,17 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Open" />
-                              <Separator layoutX="4.0" layoutY="43.0" prefHeight="0.0" prefWidth="352.0" />
-                              <Label layoutX="4.0" layoutY="46.0" prefHeight="15.0" prefWidth="73.0" text="Item Name" />
-                              <TextField layoutX="4.0" layoutY="61.0" prefHeight="23.0" prefWidth="149.0" />
-                              <TextField layoutX="170.0" layoutY="61.0" prefHeight="23.0" prefWidth="54.0" />
-                              <TextField layoutX="235.0" layoutY="61.0" prefHeight="23.0" prefWidth="53.0" />
-                              <Label layoutX="172.0" layoutY="46.0" text="Quantity" />
-                              <Label layoutX="235.0" layoutY="46.0" text="Price" />
-                              <Label layoutX="298.0" layoutY="46.0" prefHeight="15.0" prefWidth="45.0" text="Tax %" />
-                              <TextField layoutX="298.0" layoutY="61.0" prefHeight="23.0" prefWidth="45.0" />
-                              <MenuButton layoutX="3.0" layoutY="106.0" mnemonicParsing="false" text="Operation Type">
-                                <items>
-                                  <MenuItem mnemonicParsing="false" text="Item Add" />
-                                  <MenuItem mnemonicParsing="false" text="Item Void" />
-                                </items>
-                              </MenuButton>
-                              <MenuButton layoutX="112.0" layoutY="106.0" mnemonicParsing="false" text="Item Type">
+                              <Button layoutX="557.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Open" />
+                              <Separator layoutX="4.0" layoutY="43.0" prefHeight="4.0" prefWidth="631.0" />
+                              <Label layoutX="14.0" layoutY="45.0" prefHeight="15.0" prefWidth="73.0" text="Item Name" />
+                              <TextField fx:id="tfFTestItemName" layoutX="13.0" layoutY="61.0" prefHeight="25.0" prefWidth="236.0" />
+                              <TextField fx:id="tfFTestQuantity" layoutX="293.0" layoutY="61.0" prefHeight="23.0" prefWidth="54.0" />
+                              <TextField fx:id="tfFTestPrice" layoutX="387.0" layoutY="61.0" prefHeight="23.0" prefWidth="53.0" />
+                              <Label layoutX="293.0" layoutY="45.0" text="Quantity" />
+                              <Label layoutX="387.0" layoutY="45.0" text="Price" />
+                              <Label layoutX="486.0" layoutY="45.0" prefHeight="15.0" prefWidth="45.0" text="Tax %" />
+                              <TextField fx:id="tfFTestTax" layoutX="486.0" layoutY="61.0" prefHeight="23.0" prefWidth="45.0" />
+                              <MenuButton layoutX="162.0" layoutY="115.0" mnemonicParsing="false" text="Item Type">
                                 <items>
                                   <MenuItem mnemonicParsing="false" text="Sale" />
                                   <MenuItem mnemonicParsing="false" text="Bottle Discount" />
@@ -55,32 +49,40 @@
                                     <MenuItem mnemonicParsing="false" text="Item Recharge" />
                                 </items>
                               </MenuButton>
-                              <Label layoutX="206.0" layoutY="91.0" text="Extra Description " />
-                              <TextField layoutX="206.0" layoutY="106.0" prefHeight="23.0" prefWidth="150.0" />
-                              <Button layoutX="144.0" layoutY="143.0" mnemonicParsing="false" text="Send" />
-                              <Separator layoutX="4.0" layoutY="175.0" prefHeight="2.0" prefWidth="360.0" />
-                              <Button layoutX="6.0" layoutY="178.0" mnemonicParsing="false" text="SubTotal" />
-                              <Button layoutX="235.0" layoutY="178.0" mnemonicParsing="false" text="Cancel" />
-                              <MenuButton layoutX="73.0" layoutY="178.0" mnemonicParsing="false" text="Discount">
+                              <Label layoutX="293.0" layoutY="98.0" text="Extra Description " />
+                              <TextField layoutX="294.0" layoutY="115.0" prefHeight="25.0" prefWidth="240.0" />
+                              <Button layoutX="555.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Send" />
+                              <Separator layoutX="13.0" layoutY="244.0" prefHeight="0.0" prefWidth="615.0" />
+                              <Button layoutX="14.0" layoutY="257.0" mnemonicParsing="false" text="SubTotal" />
+                              <Button layoutX="557.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Cancel" />
+                              <MenuButton layoutX="162.0" layoutY="258.0" mnemonicParsing="false" text="Discount">
                                 <items>
                                   <MenuItem mnemonicParsing="false" text="5%" />
                                   <MenuItem mnemonicParsing="false" text="10%" />
                                 </items>
                               </MenuButton>
-                              <MenuButton layoutX="148.0" layoutY="178.0" mnemonicParsing="false" text="Recharge">
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="5%" />
-                                    <MenuItem mnemonicParsing="false" text="10%" />
-                                 </items>
-                              </MenuButton>
-                              <Button layoutX="233.0" layoutY="207.0" mnemonicParsing="false" text="Pay" />
-                              <Label layoutX="4.0" layoutY="203.0" text="Paid" />
-                              <Label layoutY="214.0" text="Name" />
-                              <TextField layoutX="30.0" layoutY="207.0" prefHeight="23.0" prefWidth="94.0" />
-                              <TextField layoutX="170.0" layoutY="207.0" prefHeight="23.0" prefWidth="51.0" />
-                              <Label layoutX="134.0" layoutY="203.0" text="Paid" />
-                              <Label layoutX="129.0" layoutY="214.0" text="Amount" />
-                              <Button layoutX="293.0" layoutY="182.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="68.0" text="To Finalize" />
+                              <Button layoutX="555.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Pay" />
+                              <Label layoutX="260.0" layoutY="256.0" text="Paid" />
+                              <Label layoutX="261.0" layoutY="268.0" text="Name" />
+                              <TextField layoutX="299.0" layoutY="257.0" prefHeight="25.0" prefWidth="81.0" />
+                              <TextField layoutX="440.0" layoutY="257.0" prefHeight="25.0" prefWidth="73.0" />
+                              <Label layoutX="393.0" layoutY="256.0" text="Paid" />
+                              <Label layoutX="392.0" layoutY="268.0" text="Amount" />
+                              <Button layoutX="557.0" layoutY="318.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="To Finalize" />
+                              <CheckBox fx:id="cbFTestTaxable" layoutX="562.0" layoutY="65.0" mnemonicParsing="false" text="Taxable" />
+                              <CheckBox layoutX="14.0" layoutY="168.0" mnemonicParsing="false" text="Other tax fixed" />
+                              <CheckBox layoutX="145.0" layoutY="168.0" mnemonicParsing="false" text="Amount" />
+                              <CheckBox layoutX="236.0" layoutY="168.0" mnemonicParsing="false" text="T.AjustTask" />
+                              <CheckBox layoutX="339.0" layoutY="168.0" mnemonicParsing="false" text="T.AjustNeto" />
+                              <CheckBox layoutX="440.0" layoutY="168.0" mnemonicParsing="false" text="\% Neto" />
+                              <CheckBox layoutX="525.0" layoutY="168.0" mnemonicParsing="false" text="Non other tax" />
+                              <TextField layoutX="145.0" layoutY="186.0" prefHeight="25.0" prefWidth="81.0" />
+                              <TextField layoutX="236.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" />
+                              <TextField layoutX="340.0" layoutY="186.0" prefHeight="25.0" prefWidth="87.0" />
+                              <TextField layoutX="442.0" layoutY="186.0" prefHeight="25.0" prefWidth="67.0" />
+                              <TextField layoutX="88.0" layoutY="258.0" prefHeight="25.0" prefWidth="66.0" />
+                              <ChoiceBox fx:id="cbFTestOperationType" layoutX="12.0" layoutY="115.0" prefHeight="25.0" prefWidth="132.0" />
+                              <Label layoutX="14.0" layoutY="98.0" text="Operation Type" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
@@ -88,12 +90,12 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="143.0" layoutY="14.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="73.0" text="Open" />
-                              <TextArea layoutX="14.0" layoutY="53.0" prefHeight="35.0" prefWidth="336.0" />
-                              <Button layoutX="285.0" layoutY="89.0" mnemonicParsing="false" text="Send Text" />
-                              <CheckBox layoutX="14.0" layoutY="93.0" mnemonicParsing="false" text="Doble Wide" />
-                              <Button layoutX="140.0" layoutY="118.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="73.0" text="Close" />
-                              <Button layoutX="152.0" layoutY="198.0" mnemonicParsing="false" text="Cancel" />
+                              <Button layoutX="551.0" layoutY="14.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="73.0" text="Open" />
+                              <TextArea layoutX="14.0" layoutY="53.0" prefHeight="59.0" prefWidth="611.0" />
+                              <Button layoutX="557.0" layoutY="128.0" mnemonicParsing="false" text="Send Text" />
+                              <CheckBox layoutX="14.0" layoutY="123.0" mnemonicParsing="false" text="Doble Wide" />
+                              <Button layoutX="547.0" layoutY="292.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Close Ticket" />
+                              <Button layoutX="14.0" layoutY="292.0" mnemonicParsing="false" text="Cancel Ticket" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -102,10 +104,10 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <CheckBox layoutY="6.0" mnemonicParsing="false" text="Bill" />
-                              <CheckBox layoutX="59.0" layoutY="6.0" mnemonicParsing="false" text="Debit Note" />
-                              <CheckBox layoutX="149.0" layoutY="6.0" mnemonicParsing="false" text="Credit Note" />
-                              <MenuButton layoutX="4.0" layoutY="62.0" mnemonicParsing="false" text="Condition Tax">
+                              <CheckBox layoutX="14.0" layoutY="21.0" mnemonicParsing="false" text="Bill" />
+                              <CheckBox layoutX="164.0" layoutY="21.0" mnemonicParsing="false" text="Debit Note" />
+                              <CheckBox layoutX="394.0" layoutY="21.0" mnemonicParsing="false" text="Credit Note" />
+                              <MenuButton layoutX="156.0" layoutY="158.0" mnemonicParsing="false" text="Condition Tax">
                                 <items>
                                   <MenuItem mnemonicParsing="false" text="Final Consumer" />
                                   <MenuItem mnemonicParsing="false" text="Inscript" />
@@ -113,28 +115,28 @@
                                     <MenuItem mnemonicParsing="false" text="Excent" />
                                 </items>
                               </MenuButton>
-                              <TextField layoutX="153.0" layoutY="62.0" prefHeight="23.0" prefWidth="116.0" />
-                              <Label layoutX="114.0" layoutY="66.0" text="Number" />
-                              <Label layoutX="4.0" layoutY="33.0" text="Name" />
-                              <Label layoutX="161.0" layoutY="33.0" text="Address" />
-                              <TextField layoutX="36.0" layoutY="29.0" prefHeight="23.0" prefWidth="118.0" />
-                              <TextField layoutX="200.0" layoutY="29.0" prefHeight="23.0" prefWidth="151.0" />
-                              <Button layoutX="285.0" layoutY="62.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="84.0" text="Send Client" />
-                              <Button layoutX="12.0" layoutY="95.0" mnemonicParsing="false" text="Open" />
-                              <Separator layoutX="3.0" layoutY="93.0" prefHeight="4.0" prefWidth="360.0" />
-                              <MenuButton layoutX="61.0" layoutY="95.0" mnemonicParsing="false" text="Operation Type">
+                              <TextField layoutX="297.0" layoutY="110.0" prefHeight="23.0" prefWidth="116.0" />
+                              <Label layoutX="244.0" layoutY="114.0" text="Number" />
+                              <Label layoutX="14.0" layoutY="68.0" text="Name" />
+                              <Label layoutX="278.0" layoutY="68.0" text="Address" />
+                              <TextField layoutX="46.0" layoutY="64.0" prefHeight="25.0" prefWidth="220.0" />
+                              <TextField layoutX="326.0" layoutY="64.0" prefHeight="25.0" prefWidth="301.0" />
+                              <Button layoutX="540.0" layoutY="110.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="84.0" text="Send Client" />
+                              <Button layoutX="14.0" layoutY="170.0" mnemonicParsing="false" text="Open" />
+                              <Separator layoutX="14.0" layoutY="152.0" prefHeight="8.0" prefWidth="617.0" />
+                              <MenuButton layoutX="14.0" layoutY="110.0" mnemonicParsing="false" text="Operation Type">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="Item Add" />
                                     <MenuItem mnemonicParsing="false" text="Item Void" />
                                  </items>
                               </MenuButton>
-                              <MenuButton layoutX="248.0" layoutY="3.0" mnemonicParsing="false" text="Type">
+                              <MenuButton layoutX="566.0" layoutY="17.0" mnemonicParsing="false" text="Type">
                                 <items>
                                   <MenuItem mnemonicParsing="false" text="A" />
                                   <MenuItem mnemonicParsing="false" text="B/C" />
                                 </items>
                               </MenuButton>
-                              <MenuButton layoutX="180.0" layoutY="95.0" mnemonicParsing="false" text="Item Type">
+                              <MenuButton layoutX="141.0" layoutY="110.0" mnemonicParsing="false" text="Item Type">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="Sale" />
                                     <MenuItem mnemonicParsing="false" text="Bottle Discount" />
@@ -142,43 +144,43 @@
                                     <MenuItem mnemonicParsing="false" text="Item Recharge" />
                                  </items>
                               </MenuButton>
-                              <MenuButton layoutX="276.0" layoutY="95.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="73.0" text="TAX %">
+                              <MenuButton layoutX="546.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="73.0" text="TAX %">
                                 <items>
                                   <MenuItem mnemonicParsing="false" text="21" />
                                   <MenuItem mnemonicParsing="false" text="10.50" />
                                     <MenuItem mnemonicParsing="false" text="0" />
                                 </items>
                               </MenuButton>
-                              <Label layoutY="124.0" prefHeight="15.0" prefWidth="73.0" text="Item Name" />
-                              <TextField layoutX="-1.0" layoutY="139.0" prefHeight="23.0" prefWidth="149.0" />
-                              <Label layoutX="159.0" layoutY="124.0" text="Quantity" />
-                              <Label layoutX="221.0" layoutY="124.0" text="Price" />
-                              <Button layoutX="292.0" layoutY="139.0" mnemonicParsing="false" text="Send Item" />
-                              <TextField layoutX="156.0" layoutY="139.0" prefHeight="23.0" prefWidth="54.0" />
-                              <TextField layoutX="222.0" layoutY="139.0" prefHeight="23.0" prefWidth="53.0" />
-                              <Separator layoutX="-2.0" layoutY="167.0" prefHeight="5.0" prefWidth="360.0" />
-                              <Button layoutX="4.0" layoutY="173.0" mnemonicParsing="false" text="SubTotal" />
-                              <MenuButton layoutX="66.0" layoutY="173.0" mnemonicParsing="false" text="Discount">
+                              <Label layoutX="15.0" layoutY="206.0" prefHeight="15.0" prefWidth="73.0" text="Item Name" />
+                              <TextField layoutX="14.0" layoutY="220.0" prefHeight="25.0" prefWidth="179.0" />
+                              <Label layoutX="221.0" layoutY="206.0" text="Quantity" />
+                              <Label layoutX="355.0" layoutY="206.0" text="Price" />
+                              <Button layoutX="548.0" layoutY="220.0" mnemonicParsing="false" text="Send Item" />
+                              <TextField layoutX="221.0" layoutY="220.0" prefHeight="25.0" prefWidth="94.0" />
+                              <TextField layoutX="356.0" layoutY="220.0" prefHeight="25.0" prefWidth="87.0" />
+                              <Separator layoutX="14.0" layoutY="252.0" prefHeight="6.0" prefWidth="613.0" />
+                              <Button layoutX="15.0" layoutY="264.0" mnemonicParsing="false" text="SubTotal" />
+                              <MenuButton layoutX="104.0" layoutY="264.0" mnemonicParsing="false" text="Discount">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="5%" />
                                     <MenuItem mnemonicParsing="false" text="10%" />
                                  </items>
                               </MenuButton>
-                              <MenuButton layoutX="144.0" layoutY="173.0" mnemonicParsing="false" text="Recharge">
+                              <MenuButton layoutX="247.0" layoutY="264.0" mnemonicParsing="false" text="Recharge">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="5%" />
                                     <MenuItem mnemonicParsing="false" text="10%" />
                                  </items>
                               </MenuButton>
-                              <Button layoutX="239.0" layoutY="173.0" mnemonicParsing="false" text="Cancel" />
-                              <Label layoutX="4.0" layoutY="214.0" text="Name" />
-                              <Label layoutX="4.0" layoutY="200.0" text="Paid" />
-                              <Label layoutX="139.0" layoutY="200.0" text="Paid" />
-                              <Label layoutX="137.0" layoutY="214.0" text="Amount" />
-                              <TextField layoutX="34.0" layoutY="203.0" prefHeight="23.0" prefWidth="94.0" />
-                              <TextField layoutX="175.0" layoutY="204.0" prefHeight="23.0" prefWidth="51.0" />
-                              <Button layoutX="240.0" layoutY="203.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="38.0" text="Pay" />
-                              <Button layoutX="302.0" layoutY="177.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="68.0" text="To Finalize" />
+                              <Button layoutX="548.0" layoutY="264.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Cancel" />
+                              <Label layoutX="164.0" layoutY="326.0" text="Name" />
+                              <Label layoutX="164.0" layoutY="312.0" text="Paid" />
+                              <Label layoutX="299.0" layoutY="312.0" text="Paid" />
+                              <Label layoutX="297.0" layoutY="326.0" text="Amount" />
+                              <TextField layoutX="194.0" layoutY="315.0" prefHeight="23.0" prefWidth="94.0" />
+                              <TextField layoutX="335.0" layoutY="316.0" prefHeight="23.0" prefWidth="51.0" />
+                              <Button layoutX="400.0" layoutY="315.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="38.0" text="Pay" />
+                              <Button layoutX="462.0" layoutY="289.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="68.0" text="To Finalize" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -218,7 +220,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <Button layoutX="581.0" layoutY="51.0" mnemonicParsing="false" onAction="#close" text="EXIT" textFill="#b50808">
+            <Button layoutX="582.0" layoutY="65.0" mnemonicParsing="false" onAction="#close" text="EXIT" textFill="#b50808">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -227,9 +229,9 @@
                </font>
             </Button>
             <Label layoutX="7.0" prefHeight="17.0" prefWidth="94.0" text="Printer Request" textFill="#12078d" />
-            <TextField fx:id="tfPrinterRequest" layoutX="7.0" layoutY="24.0" prefHeight="55.0" prefWidth="275.0" />
-            <TextField layoutX="297.0" layoutY="24.0" prefHeight="55.0" prefWidth="275.0" />
             <Label layoutX="297.0" prefHeight="15.0" prefWidth="73.0" text="Printer Status" textFill="#12078d" />
+            <TextArea fx:id="tfPrinterRequest" editable="false" layoutX="7.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" wrapText="true" />
+            <TextArea fx:id="tfPrinterStatus" layoutX="297.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" />
          </children>
          <opaqueInsets>
             <Insets />
