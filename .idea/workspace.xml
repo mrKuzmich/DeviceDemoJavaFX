@@ -64,8 +64,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/device/demo/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.222222">
-              <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/src/org/device/demo/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,95 +90,124 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="322" column="29" selection-start-line="322" selection-start-column="29" selection-end-line="322" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FiscalPortMediator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/device/demo/FiscalPortMediator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28732395">
-              <caret line="12" column="77" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#729#730#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
-                <element signature="e#971#972#0" expanded="true" />
-                <element signature="e#1001#1002#0" expanded="true" />
-                <element signature="e#1047#1048#0" expanded="true" />
-                <element signature="e#1071#1072#0" expanded="true" />
-                <element signature="e#1103#1104#0" expanded="true" />
-                <element signature="e#1133#1134#0" expanded="true" />
-                <element signature="e#1178#1179#0" expanded="true" />
-                <element signature="e#1202#1203#0" expanded="true" />
-                <element signature="e#1232#1233#0" expanded="true" />
-                <element signature="e#1263#1264#0" expanded="true" />
-                <element signature="e#1310#1311#0" expanded="true" />
-                <element signature="e#1335#1336#0" expanded="true" />
+                <element signature="e#0#24252#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#3298#3305#0" expanded="false" />
+                <element signature="e#3518#3525#0" expanded="false" />
+                <element signature="e#3744#3751#0" expanded="false" />
+                <element signature="e#3965#3972#0" expanded="false" />
+                <element signature="e#4521#4522#0" expanded="false" />
+                <element signature="e#4581#4582#0" expanded="false" />
+                <element signature="e#7931#7932#0" expanded="false" />
+                <element signature="e#7976#7977#0" expanded="false" />
+                <element signature="e#8029#8030#0" expanded="false" />
+                <element signature="e#8069#8070#0" expanded="false" />
+                <element signature="e#10159#10160#0" expanded="false" />
+                <element signature="e#10204#10205#0" expanded="false" />
+                <element signature="e#10257#10258#0" expanded="false" />
+                <element signature="e#10295#10296#0" expanded="false" />
+                <element signature="e#12159#12179#0" expanded="false" />
+                <element signature="e#14230#14231#0" expanded="false" />
+                <element signature="e#14296#14297#0" expanded="false" />
+                <element signature="e#14349#14350#0" expanded="false" />
+                <element signature="e#14394#14395#0" expanded="false" />
+                <element signature="e#14447#14448#0" expanded="false" />
+                <element signature="e#14488#14489#0" expanded="false" />
+                <element signature="e#15070#15071#0" expanded="false" />
+                <element signature="e#15128#15129#0" expanded="false" />
+                <element signature="e#15173#15174#0" expanded="false" />
+                <element signature="e#15218#15219#0" expanded="false" />
+                <element signature="e#15263#15264#0" expanded="false" />
+                <element signature="e#15305#15306#0" expanded="false" />
+                <element signature="e#15864#15865#0" expanded="false" />
+                <element signature="e#15920#15921#0" expanded="false" />
+                <element signature="e#15965#15966#0" expanded="false" />
+                <element signature="e#16010#16011#0" expanded="false" />
+                <element signature="e#16055#16056#0" expanded="false" />
+                <element signature="e#16095#16096#0" expanded="false" />
+                <element signature="e#16670#16671#0" expanded="false" />
+                <element signature="e#16727#16728#0" expanded="false" />
+                <element signature="e#16772#16773#0" expanded="false" />
+                <element signature="e#16817#16818#0" expanded="false" />
+                <element signature="e#16862#16863#0" expanded="false" />
+                <element signature="e#16903#16904#0" expanded="false" />
+                <element signature="e#17478#17479#0" expanded="false" />
+                <element signature="e#17535#17536#0" expanded="false" />
+                <element signature="e#17580#17581#0" expanded="false" />
+                <element signature="e#17625#17626#0" expanded="false" />
+                <element signature="e#17670#17671#0" expanded="false" />
+                <element signature="e#17711#17712#0" expanded="false" />
+                <element signature="e#18200#18201#0" expanded="false" />
+                <element signature="e#18251#18252#0" expanded="false" />
+                <element signature="e#18328#18329#0" expanded="false" />
+                <element signature="e#18361#18362#0" expanded="false" />
+                <element signature="e#18441#18442#0" expanded="false" />
+                <element signature="e#18490#18491#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StringProperty.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/StringProperty.java">
+      <file leaf-file-name="FiscalPortCommander.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/device/demo/FiscalPortCommander.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6251768">
+              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#940#941#0" expanded="true" />
+                <element signature="e#984#985#0" expanded="true" />
+                <element signature="e#1016#1017#0" expanded="true" />
+                <element signature="e#1046#1047#0" expanded="true" />
+                <element signature="e#1071#1072#0" expanded="true" />
+                <element signature="e#1114#1115#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1180#1181#0" expanded="true" />
+                <element signature="e#1204#1205#0" expanded="true" />
+                <element signature="e#1249#1250#0" expanded="true" />
+                <element signature="e#1281#1282#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HasarConstants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/hasar/HasarConstants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+              <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IntegerProperty.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/IntegerProperty.java">
+      <file leaf-file-name="FiscalDevice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/FiscalDevice.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadOnlyIntegerProperty.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/ReadOnlyIntegerProperty.java">
+      <file leaf-file-name="HasarFiscalDevice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/hasar/HasarFiscalDevice.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+              <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GSXJavaFX.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/device/demo/GSXJavaFX.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5862069">
-              <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RXTXFiscalPortSource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/port/rxtx/RXTXFiscalPortSource.java">
+      <file leaf-file-name="BasicFiscalDevice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/hasar/BasicFiscalDevice.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="88" column="18" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FiscalPort.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/port/FiscalPort.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <caret line="301" column="17" selection-start-line="301" selection-start-column="17" selection-end-line="301" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -210,8 +239,9 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/org/device/demo/Main.java" />
-        <option value="$PROJECT_DIR$/src/org/device/demo/Controller.java" />
         <option value="$PROJECT_DIR$/src/org/device/demo/FiscalPortMediator.java" />
+        <option value="$PROJECT_DIR$/src/org/device/demo/Controller.java" />
+        <option value="$PROJECT_DIR$/src/org/device/demo/FiscalPortCommander.java" />
       </list>
     </option>
   </component>
@@ -226,8 +256,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="width" value="1932" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -257,9 +287,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -322,6 +352,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fiscal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="devicedemojavafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fiscal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="devicedemojavafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="DeviceDemoJavaFX" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -360,7 +430,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Java-Fiscal-Device-API" />
@@ -650,6 +720,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
@@ -660,14 +733,15 @@
       <workItem from="1444202356908" duration="1453000" />
       <workItem from="1444208997972" duration="2825000" />
       <workItem from="1444218554304" duration="13889000" />
+      <workItem from="1444288616860" duration="3501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19469000" />
+    <option name="totallyTimeSpent" value="22970000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1932" height="1092" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -681,13 +755,13 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22256729" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20628998" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20619658" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23913044" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23908524" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -708,11 +782,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/org/device/demo/Controller.java</url>
-          <line>27</line>
+          <line>43</line>
           <properties />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -721,6 +796,172 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/org/device/demo/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/device/demo/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/scene/control/ChoiceBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="322" column="29" selection-start-line="322" selection-start-column="29" selection-end-line="322" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#24252#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3298#3305#0" expanded="false" />
+            <element signature="e#3518#3525#0" expanded="false" />
+            <element signature="e#3744#3751#0" expanded="false" />
+            <element signature="e#3965#3972#0" expanded="false" />
+            <element signature="e#4521#4522#0" expanded="false" />
+            <element signature="e#4581#4582#0" expanded="false" />
+            <element signature="e#7931#7932#0" expanded="false" />
+            <element signature="e#7976#7977#0" expanded="false" />
+            <element signature="e#8029#8030#0" expanded="false" />
+            <element signature="e#8069#8070#0" expanded="false" />
+            <element signature="e#10159#10160#0" expanded="false" />
+            <element signature="e#10204#10205#0" expanded="false" />
+            <element signature="e#10257#10258#0" expanded="false" />
+            <element signature="e#10295#10296#0" expanded="false" />
+            <element signature="e#12159#12179#0" expanded="false" />
+            <element signature="e#14230#14231#0" expanded="false" />
+            <element signature="e#14296#14297#0" expanded="false" />
+            <element signature="e#14349#14350#0" expanded="false" />
+            <element signature="e#14394#14395#0" expanded="false" />
+            <element signature="e#14447#14448#0" expanded="false" />
+            <element signature="e#14488#14489#0" expanded="false" />
+            <element signature="e#15070#15071#0" expanded="false" />
+            <element signature="e#15128#15129#0" expanded="false" />
+            <element signature="e#15173#15174#0" expanded="false" />
+            <element signature="e#15218#15219#0" expanded="false" />
+            <element signature="e#15263#15264#0" expanded="false" />
+            <element signature="e#15305#15306#0" expanded="false" />
+            <element signature="e#15864#15865#0" expanded="false" />
+            <element signature="e#15920#15921#0" expanded="false" />
+            <element signature="e#15965#15966#0" expanded="false" />
+            <element signature="e#16010#16011#0" expanded="false" />
+            <element signature="e#16055#16056#0" expanded="false" />
+            <element signature="e#16095#16096#0" expanded="false" />
+            <element signature="e#16670#16671#0" expanded="false" />
+            <element signature="e#16727#16728#0" expanded="false" />
+            <element signature="e#16772#16773#0" expanded="false" />
+            <element signature="e#16817#16818#0" expanded="false" />
+            <element signature="e#16862#16863#0" expanded="false" />
+            <element signature="e#16903#16904#0" expanded="false" />
+            <element signature="e#17478#17479#0" expanded="false" />
+            <element signature="e#17535#17536#0" expanded="false" />
+            <element signature="e#17580#17581#0" expanded="false" />
+            <element signature="e#17625#17626#0" expanded="false" />
+            <element signature="e#17670#17671#0" expanded="false" />
+            <element signature="e#17711#17712#0" expanded="false" />
+            <element signature="e#18200#18201#0" expanded="false" />
+            <element signature="e#18251#18252#0" expanded="false" />
+            <element signature="e#18328#18329#0" expanded="false" />
+            <element signature="e#18361#18362#0" expanded="false" />
+            <element signature="e#18441#18442#0" expanded="false" />
+            <element signature="e#18490#18491#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/device/demo/FiscalPortCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1281#1282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/StringProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/IntegerProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/ReadOnlyIntegerProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#5026#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3417#3418#0" expanded="false" />
+            <element signature="e#3489#3490#0" expanded="false" />
+            <element signature="e#3550#3551#0" expanded="false" />
+            <element signature="e#3607#3608#0" expanded="false" />
+            <element signature="e#4610#4611#0" expanded="false" />
+            <element signature="e#4699#4700#0" expanded="false" />
+            <element signature="e#4760#4761#0" expanded="false" />
+            <element signature="e#4837#4838#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/device/demo/GSXJavaFX.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/port/rxtx/RXTXFiscalPortSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="18" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/port/FiscalPort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/device/demo/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -789,14 +1030,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/hasar/HasarConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3730074">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/util/LoggerFiscalPort.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -817,7 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -825,7 +1057,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="107" column="17" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -833,15 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.222221">
           <caret line="216" column="37" selection-start-line="216" selection-start-column="37" selection-end-line="216" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/samples/src/main/java/Sample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.296296">
-          <caret line="15" column="79" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -849,7 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,7 +1095,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5862069">
+        <state vertical-scroll-proportion="0.0">
           <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
           <folding />
         </state>
@@ -890,8 +1111,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/device/demo/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.222222">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -902,7 +1123,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="e#0#5026#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3417#3418#0" expanded="false" />
+            <element signature="e#3489#3490#0" expanded="false" />
+            <element signature="e#3550#3551#0" expanded="false" />
+            <element signature="e#3607#3608#0" expanded="false" />
+            <element signature="e#4610#4611#0" expanded="false" />
+            <element signature="e#4699#4700#0" expanded="false" />
+            <element signature="e#4760#4761#0" expanded="false" />
+            <element signature="e#4837#4838#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -910,7 +1142,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="322" column="29" selection-start-line="322" selection-start-column="29" selection-end-line="322" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="e#0#24252#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3298#3305#0" expanded="false" />
+            <element signature="e#3518#3525#0" expanded="false" />
+            <element signature="e#3744#3751#0" expanded="false" />
+            <element signature="e#3965#3972#0" expanded="false" />
+            <element signature="e#4521#4522#0" expanded="false" />
+            <element signature="e#4581#4582#0" expanded="false" />
+            <element signature="e#7931#7932#0" expanded="false" />
+            <element signature="e#7976#7977#0" expanded="false" />
+            <element signature="e#8029#8030#0" expanded="false" />
+            <element signature="e#8069#8070#0" expanded="false" />
+            <element signature="e#10159#10160#0" expanded="false" />
+            <element signature="e#10204#10205#0" expanded="false" />
+            <element signature="e#10257#10258#0" expanded="false" />
+            <element signature="e#10295#10296#0" expanded="false" />
+            <element signature="e#12159#12179#0" expanded="false" />
+            <element signature="e#14230#14231#0" expanded="false" />
+            <element signature="e#14296#14297#0" expanded="false" />
+            <element signature="e#14349#14350#0" expanded="false" />
+            <element signature="e#14394#14395#0" expanded="false" />
+            <element signature="e#14447#14448#0" expanded="false" />
+            <element signature="e#14488#14489#0" expanded="false" />
+            <element signature="e#15070#15071#0" expanded="false" />
+            <element signature="e#15128#15129#0" expanded="false" />
+            <element signature="e#15173#15174#0" expanded="false" />
+            <element signature="e#15218#15219#0" expanded="false" />
+            <element signature="e#15263#15264#0" expanded="false" />
+            <element signature="e#15305#15306#0" expanded="false" />
+            <element signature="e#15864#15865#0" expanded="false" />
+            <element signature="e#15920#15921#0" expanded="false" />
+            <element signature="e#15965#15966#0" expanded="false" />
+            <element signature="e#16010#16011#0" expanded="false" />
+            <element signature="e#16055#16056#0" expanded="false" />
+            <element signature="e#16095#16096#0" expanded="false" />
+            <element signature="e#16670#16671#0" expanded="false" />
+            <element signature="e#16727#16728#0" expanded="false" />
+            <element signature="e#16772#16773#0" expanded="false" />
+            <element signature="e#16817#16818#0" expanded="false" />
+            <element signature="e#16862#16863#0" expanded="false" />
+            <element signature="e#16903#16904#0" expanded="false" />
+            <element signature="e#17478#17479#0" expanded="false" />
+            <element signature="e#17535#17536#0" expanded="false" />
+            <element signature="e#17580#17581#0" expanded="false" />
+            <element signature="e#17625#17626#0" expanded="false" />
+            <element signature="e#17670#17671#0" expanded="false" />
+            <element signature="e#17711#17712#0" expanded="false" />
+            <element signature="e#18200#18201#0" expanded="false" />
+            <element signature="e#18251#18252#0" expanded="false" />
+            <element signature="e#18328#18329#0" expanded="false" />
+            <element signature="e#18361#18362#0" expanded="false" />
+            <element signature="e#18441#18442#0" expanded="false" />
+            <element signature="e#18490#18491#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -930,36 +1216,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/samples/src/main/java/Sample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1814301">
+          <caret line="15" column="79" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/device/demo/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/device/demo/FiscalPortMediator.java">
+    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/FiscalDevice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28732395">
-          <caret line="12" column="77" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/hasar/BasicFiscalDevice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="301" column="17" selection-start-line="301" selection-start-column="17" selection-end-line="301" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/hasar/HasarFiscalDevice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Java-Fiscal-Device-API/src/main/java/com/taliter/fiscal/device/hasar/HasarConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/device/demo/FiscalPortCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6251768">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-            <element signature="e#971#972#0" expanded="true" />
-            <element signature="e#1001#1002#0" expanded="true" />
-            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
             <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1103#1104#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1178#1179#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
-            <element signature="e#1232#1233#0" expanded="true" />
-            <element signature="e#1263#1264#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1281#1282#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1017,7 +1341,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Java-Fiscal-Device-API</last-edited>
+          <last-edited>DeviceDemoJavaFX</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

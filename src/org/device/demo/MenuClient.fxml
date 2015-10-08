@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="144.0" layoutY="6.0" text="Document Options" textFill="#249a0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <MenuButton layoutX="75.0" layoutY="60.0" mnemonicParsing="false" text="Type">
+        <items>
+          <MenuItem mnemonicParsing="false" text="A" />
+          <MenuItem mnemonicParsing="false" text="B/C" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="233.0" layoutY="60.0" mnemonicParsing="false" text="Condition Tax">
+        <items>
+          <MenuItem mnemonicParsing="false" text=" I. Enrolled Responsible" />
+          <MenuItem mnemonicParsing="false" text=" N : Responsible not registered" />
+            <MenuItem mnemonicParsing="false" text=" E : Exempt" />
+            <MenuItem mnemonicParsing="false" text="A: Not Responsible" />
+            <MenuItem mnemonicParsing="false" text="B: Head not registered" />
+            <MenuItem mnemonicParsing="false" text="M : Responsible monotributo" />
+            <MenuItem mnemonicParsing="false" text="S : social Monotribustista" />
+            <MenuItem mnemonicParsing="false" text="T : Not categorized " />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="34.0" layoutY="91.0" mnemonicParsing="false" text="Document">
+        <items>
+          <MenuItem mnemonicParsing="false" text="CUIT" />
+          <MenuItem mnemonicParsing="false" text="CUIL" />
+            <MenuItem mnemonicParsing="false" text="DNI" />
+            <MenuItem mnemonicParsing="false" text="LC" />
+            <MenuItem mnemonicParsing="false" text="PASSPORT" />
+        </items>
+      </MenuButton>
+      <Label layoutX="187.0" layoutY="95.0" text="Number" />
+      <TextField layoutX="224.0" layoutY="91.0" />
+      <TextField layoutX="14.0" layoutY="138.0" prefHeight="23.0" prefWidth="155.0" />
+      <TextField layoutX="195.0" layoutY="138.0" prefHeight="23.0" prefWidth="164.0" />
+      <Button layoutX="291.0" layoutY="181.0" mnemonicParsing="false" text="Send Client" />
+      <Label layoutX="14.0" layoutY="123.0" text="Name" />
+      <Label layoutX="195.0" layoutY="123.0" text="Address" />
+      <CheckBox layoutX="8.0" layoutY="30.0" mnemonicParsing="false" text="Bill" />
+      <CheckBox layoutX="97.0" layoutY="30.0" mnemonicParsing="false" text="Receipt" />
+      <CheckBox layoutX="190.0" layoutY="30.0" mnemonicParsing="false" text="Debit Note" />
+      <CheckBox layoutX="277.0" layoutY="30.0" mnemonicParsing="false" text="Credit Note" />
+   </children>
+</Pane>
