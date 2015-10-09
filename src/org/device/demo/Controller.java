@@ -16,9 +16,24 @@ public class Controller {
   static ObservableList<String> comPorts = null;
   final static ObservableList<Integer> baudRates = FXCollections.observableArrayList(
           300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200, 230400);
-  final static ObservableList<OperationType> operationTypes = FXCollections.observableArrayList(
-          new OperationType("M", "Add Amount"),
-          new OperationType("m", "Void Amount"));
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> OPERATION_TYPES = FXCollections.observableArrayList(
+          new FiscalPortCommander.TypeSelectItem("M", "Add Amount"),
+          new FiscalPortCommander.TypeSelectItem("m", "Void Amount"));
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> DOCUMENT_TYPES = FXCollections.observableArrayList(
+          new FiscalPortCommander.TypeSelectItem("T", "Ticket"),
+          new FiscalPortCommander.TypeSelectItem("A", "Ticket Bill \"A\""),
+          new FiscalPortCommander.TypeSelectItem("B", "Ticket Bill \"B/C\""),
+          new FiscalPortCommander.TypeSelectItem("D", "Debit note \"A\""),
+          new FiscalPortCommander.TypeSelectItem("E", "Debit note \"B/C\"")
+  );
+
+  final static String IT_SALE = "Sale";
+  final static String IT_BOTTLE_DISCOUNT = "Bottle Discount";
+  final static String IT_ITEM_DISCOUNT = "Item Discount";
+  final static String IT_ITEM_RECHARGE = "Item Recharge";
+
+  final static ObservableList<String> ITEM_TYPES = FXCollections.observableArrayList(
+          IT_SALE, IT_BOTTLE_DISCOUNT, IT_ITEM_DISCOUNT, IT_ITEM_RECHARGE);
 
 
   private FiscalPortCommander fiscalPort;
@@ -35,6 +50,8 @@ public class Controller {
 
   //FiscalTestFields
   @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestDocumentType;
+  @FXML
   private TextField tfFTestItemName;
   @FXML
   private TextField tfFTestQuantity;
@@ -45,7 +62,11 @@ public class Controller {
   @FXML
   private CheckBox cbFTestTaxable;
   @FXML
-  private ChoiceBox<OperationType> cbFTestOperationType;
+  private TextField tfFTestAmount;
+  @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestOperationType;
+  @FXML
+  private ChoiceBox<String> cbFTestItemType;
 
   @FXML
   private void close() {
@@ -54,18 +75,42 @@ public class Controller {
 
   @FXML
   private void accept() {
-    try {
-      final String comport = cbComPort.getValue();
-      final Integer baudRate = cbBaudRates.getValue();
-      if (comport != null && !comport.isEmpty() && baudRate != null && baudRate > 0) {
-        fiscalPort.setComPort(comport);
-        fiscalPort.setBaudRate(baudRate);
-        fiscalPort.setSaveLog(cbSaveLog.isSelected());
-        fiscalPort.statusRequest();
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    initFiscalPort();
+    fiscalPort.statusRequest();
+  }
+
+  @FXML
+  private void fiscalDocumentOpen() {
+    initFiscalPort();
+    fiscalPort.openFiscalDocument(cbFTestDocumentType.getValue());
+  }
+
+  @FXML
+  private void fiscalDocumentSend() {
+    initFiscalPort();
+    if (IT_SALE.equals(cbFTestItemType.getValue()))
+      fiscalPort.printLineFiscalDocument(tfFTestItemName.getText(), tfFTestQuantity.getText(), tfFTestPrice.getText(),
+            tfFTestTax.getText(), cbFTestOperationType.getValue().getType(), null, null, null);
+    else if (IT_BOTTLE_DISCOUNT.equals(cbFTestItemType.getValue()))
+      fiscalPort.returRecharge(tfFTestItemName.getText(), Float.valueOf(tfFTestAmount.getText()), Float.valueOf(tfFTestTax.getText()),
+              cbFTestOperationType.getValue(), null, "1", true, true);
+  }
+
+  @FXML
+  private void fiscalDocumentClose() {
+    initFiscalPort();
+    fiscalPort.closeFiscalDocument();
+  }
+
+  public void initFiscalPort() {
+    final String comport = cbComPort.getValue();
+    final Integer baudRate = cbBaudRates.getValue();
+    if (comport != null && !comport.isEmpty() && baudRate != null && baudRate > 0) {
+      fiscalPort.setComPort(comport);
+      fiscalPort.setBaudRate(baudRate);
+      fiscalPort.setSaveLog(cbSaveLog.isSelected());
+    } else
+      throw new UserFormException("Port configuration error");
   }
 
   public void setFiscalPort(FiscalPortCommander fiscalPort) {
@@ -73,7 +118,12 @@ public class Controller {
     cbComPort.setItems(getComPorts());
     cbBaudRates.setItems(baudRates);
     cbBaudRates.setValue(fiscalPort.getBaudRate());
-    cbFTestOperationType.setItems(operationTypes);
+    cbFTestDocumentType.setItems(DOCUMENT_TYPES);
+    cbFTestDocumentType.setValue(DOCUMENT_TYPES.get(0));
+    cbFTestOperationType.setItems(OPERATION_TYPES);
+    cbFTestOperationType.setValue(OPERATION_TYPES.get(0));
+    cbFTestItemType.setItems(ITEM_TYPES);
+    cbFTestItemType.setValue(ITEM_TYPES.get(0));
     fiscalPort.setRequestListener(new FiscalPortCommander.FiscalPacketListener() {
       @Override
       public void invoke(FiscalPacket packet) {
@@ -95,29 +145,6 @@ public class Controller {
     if (comPorts == null)
       comPorts = FXCollections.observableArrayList(RXTXFiscalPort.getPortNames());
     return comPorts;
-  }
-
-  private static class OperationType {
-    private String operation;
-    private String operationCaption;
-
-    public OperationType(String operation, String operationCaption) {
-      this.operation = operation;
-      this.operationCaption = operationCaption;
-    }
-
-    public String getOperation() {
-      return operation;
-    }
-
-    public String getOperationCaption() {
-      return operationCaption;
-    }
-
-    @Override
-    public String toString() {
-      return getOperationCaption();
-    }
   }
 
 }
