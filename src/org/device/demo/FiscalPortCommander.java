@@ -12,7 +12,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 
 /**
- * Created by Дмитрий on 07.10.2015.
+ * Created by пїЅпїЅпїЅпїЅпїЅпїЅпїЅ on 07.10.2015.
  */
 public class FiscalPortCommander implements HasarConstants {
 
@@ -107,18 +107,18 @@ public class FiscalPortCommander implements HasarConstants {
     }
   }
 
-  public void printLineFiscalDocument(String itemName, String quantity, String amount, String tax,
-                                      String operationType, String internalTax, String parameterDisplay, Boolean totalPrice) {
+  public void printLineFiscalDocument(String itemName, Float quantity, Float amount, Float tax,
+                                      TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay, Boolean totalPrice) {
     open();
     try {
       doCommand(CMD_PRINT_LINE_ITEM,
               itemName != null ? truncate(itemName, 25) : null,
-              quantity != null ? quantityFormat.format(Float.valueOf(quantity)) : null,
-              amount != null ? amountFormat.format(Float.valueOf(amount)) : null,
-              tax != null ? taxFormat.format(Float.valueOf(tax) * 100) : null,
-              operationType != null ? truncate(operationType, 1) : null,
-              internalTax != null ? truncate(internalTax, 8) : null,
-              parameterDisplay != null ? truncate(parameterDisplay, 1) : null,
+              quantity != null ? quantityFormat.format(quantity) : null,
+              amount != null ? amountFormat.format(amount) : null,
+              tax != null ? taxFormat.format(tax * 100) : null,
+              operationType != null ? operationType.getType() : null,
+              internalTax != null ? taxFormat.format(internalTax) : null,
+              parameterDisplay != null ? parameterDisplay.getType() : null,
               totalPrice != null && totalPrice ? "T" : "b"
       );
     } catch (Exception e) {
@@ -129,7 +129,7 @@ public class FiscalPortCommander implements HasarConstants {
   }
 
   public void returRecharge(String description, Float amountDiscount, Float tax, TypeSelectItem operationType,
-                            String internalTax, String displayParameters, Boolean totalPrice, Boolean discount) {
+                            Float internalTax, String displayParameters, Boolean totalPrice, Boolean discount) {
     open();
     try {
       doCommand(CMD_RETURN_RECHARGE,
@@ -137,7 +137,7 @@ public class FiscalPortCommander implements HasarConstants {
               amountDiscount != null ? amountFormat.format(amountDiscount) : null,
               tax != null ? taxFormat.format(tax * 100) : null,
               operationType != null ? operationType.getType() : null,
-              internalTax != null ? truncate(internalTax, 8) : null,
+              internalTax != null ? taxFormat.format(internalTax) : null,
               displayParameters != null ? truncate(displayParameters, 1) : null,
               totalPrice != null && totalPrice ? "T" : "*",
               discount != null && discount ? "B" : "*"

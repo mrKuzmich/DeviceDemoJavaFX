@@ -35,50 +35,52 @@
                               <Separator layoutX="4.0" layoutY="43.0" prefHeight="4.0" prefWidth="631.0" />
                               <Label layoutX="14.0" layoutY="45.0" prefHeight="15.0" prefWidth="73.0" text="Item Name" />
                               <TextField fx:id="tfFTestItemName" layoutX="13.0" layoutY="61.0" prefHeight="25.0" prefWidth="236.0" />
-                              <TextField fx:id="tfFTestQuantity" layoutX="293.0" layoutY="61.0" prefHeight="23.0" prefWidth="54.0" />
-                              <TextField fx:id="tfFTestPrice" layoutX="387.0" layoutY="61.0" prefHeight="23.0" prefWidth="53.0" />
-                              <Label layoutX="293.0" layoutY="45.0" text="Quantity" />
-                              <Label layoutX="387.0" layoutY="45.0" text="Price" />
-                              <Label layoutX="486.0" layoutY="45.0" prefHeight="15.0" prefWidth="45.0" text="Tax %" />
-                              <TextField fx:id="tfFTestTax" layoutX="486.0" layoutY="61.0" prefHeight="23.0" prefWidth="45.0" />
+                              <TextField fx:id="tfFTestQuantity" layoutX="283.0" layoutY="61.0" prefHeight="23.0" prefWidth="54.0" />
+                              <TextField fx:id="tfFTestPrice" layoutX="367.0" layoutY="61.0" prefHeight="23.0" prefWidth="53.0" />
+                              <Label layoutX="283.0" layoutY="45.0" text="Quantity" />
+                              <Label layoutX="367.0" layoutY="45.0" text="Price" />
+                              <Label layoutX="448.0" layoutY="45.0" prefHeight="15.0" prefWidth="45.0" text="Tax %" />
+                              <TextField fx:id="tfFTestTax" layoutX="448.0" layoutY="61.0" prefHeight="23.0" prefWidth="45.0" />
                               <Label layoutX="293.0" layoutY="98.0" text="Extra Description " />
                               <TextField layoutX="294.0" layoutY="115.0" prefHeight="25.0" prefWidth="240.0" />
-                              <Button layoutX="555.0" layoutY="211.0" mnemonicParsing="false" onAction="#fiscalDocumentSend" prefHeight="25.0" prefWidth="73.0" text="Send" />
-                              <Separator layoutX="13.0" layoutY="244.0" prefHeight="0.0" prefWidth="615.0" />
-                              <Button layoutX="14.0" layoutY="257.0" mnemonicParsing="false" text="SubTotal" />
-                              <Button layoutX="557.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Cancel" />
-                              <MenuButton layoutX="162.0" layoutY="258.0" mnemonicParsing="false" text="Discount">
+                              <Button layoutX="555.0" layoutY="219.0" mnemonicParsing="false" onAction="#fiscalDocumentSend" prefHeight="25.0" prefWidth="73.0" text="Send" />
+                              <Separator layoutX="11.0" layoutY="257.0" prefHeight="0.0" prefWidth="615.0" />
+                              <Button layoutX="12.0" layoutY="270.0" mnemonicParsing="false" text="SubTotal" />
+                              <Button layoutX="555.0" layoutY="298.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Cancel" />
+                              <MenuButton layoutX="160.0" layoutY="271.0" mnemonicParsing="false" text="Discount">
                                 <items>
                                   <MenuItem mnemonicParsing="false" text="5%" />
                                   <MenuItem mnemonicParsing="false" text="10%" />
                                 </items>
                               </MenuButton>
-                              <Button layoutX="555.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Pay" />
-                              <Label layoutX="260.0" layoutY="256.0" text="Paid" />
-                              <Label layoutX="261.0" layoutY="268.0" text="Name" />
-                              <TextField layoutX="299.0" layoutY="257.0" prefHeight="25.0" prefWidth="81.0" />
-                              <TextField layoutX="440.0" layoutY="257.0" prefHeight="25.0" prefWidth="73.0" />
-                              <Label layoutX="393.0" layoutY="256.0" text="Paid" />
-                              <Label layoutX="392.0" layoutY="268.0" text="Amount" />
-                              <Button layoutX="557.0" layoutY="318.0" mnemonicParsing="false" onAction="#fiscalDocumentClose" prefHeight="25.0" prefWidth="73.0" text="To Finalize" />
-                              <CheckBox fx:id="cbFTestTaxable" layoutX="562.0" layoutY="65.0" mnemonicParsing="false" text="Taxable" />
+                              <Button layoutX="553.0" layoutY="265.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Pay" />
+                              <Label layoutX="258.0" layoutY="269.0" text="Paid" />
+                              <Label layoutX="259.0" layoutY="281.0" text="Name" />
+                              <TextField layoutX="297.0" layoutY="270.0" prefHeight="25.0" prefWidth="81.0" />
+                              <TextField layoutX="438.0" layoutY="270.0" prefHeight="25.0" prefWidth="73.0" />
+                              <Label layoutX="391.0" layoutY="269.0" text="Paid" />
+                              <Label layoutX="390.0" layoutY="281.0" text="Amount" />
+                              <Button layoutX="555.0" layoutY="331.0" mnemonicParsing="false" onAction="#fiscalDocumentClose" prefHeight="25.0" prefWidth="73.0" text="To Finalize" />
+                              <CheckBox fx:id="cbFTestTotalPrice" layoutX="515.0" layoutY="65.0" mnemonicParsing="false" text="Price tax included" />
                               <CheckBox layoutX="14.0" layoutY="168.0" mnemonicParsing="false" text="Other tax fixed" />
                               <CheckBox layoutX="145.0" layoutY="168.0" mnemonicParsing="false" text="Amount" />
-                              <CheckBox layoutX="236.0" layoutY="168.0" mnemonicParsing="false" text="T.AjustTask" />
-                              <CheckBox layoutX="339.0" layoutY="168.0" mnemonicParsing="false" text="T.AjustNeto" />
-                              <CheckBox layoutX="440.0" layoutY="168.0" mnemonicParsing="false" text="\% Neto" />
-                              <CheckBox layoutX="525.0" layoutY="168.0" mnemonicParsing="false" text="Non other tax" />
+                              <CheckBox disable="true" layoutX="236.0" layoutY="168.0" mnemonicParsing="false" text="T.AjustTask" />
+                              <CheckBox disable="true" layoutX="339.0" layoutY="168.0" mnemonicParsing="false" text="T.AjustNeto" />
+                              <CheckBox disable="true" layoutX="440.0" layoutY="168.0" mnemonicParsing="false" text="\% Neto" />
+                              <CheckBox disable="true" layoutX="525.0" layoutY="168.0" mnemonicParsing="false" text="Non other tax" />
                               <TextField fx:id="tfFTestAmount" layoutX="145.0" layoutY="186.0" prefHeight="25.0" prefWidth="81.0" />
-                              <TextField layoutX="236.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" />
-                              <TextField layoutX="340.0" layoutY="186.0" prefHeight="25.0" prefWidth="87.0" />
-                              <TextField layoutX="442.0" layoutY="186.0" prefHeight="25.0" prefWidth="67.0" />
-                              <TextField layoutX="88.0" layoutY="258.0" prefHeight="25.0" prefWidth="66.0" />
+                              <TextField disable="true" layoutX="236.0" layoutY="186.0" prefHeight="25.0" prefWidth="94.0" />
+                              <TextField disable="true" layoutX="340.0" layoutY="186.0" prefHeight="25.0" prefWidth="87.0" />
+                              <TextField disable="true" layoutX="442.0" layoutY="186.0" prefHeight="25.0" prefWidth="67.0" />
+                              <TextField layoutX="86.0" layoutY="271.0" prefHeight="25.0" prefWidth="66.0" />
                               <ChoiceBox fx:id="cbFTestOperationType" layoutX="12.0" layoutY="115.0" prefHeight="25.0" prefWidth="132.0" />
                               <Label layoutX="14.0" layoutY="98.0" text="Operation Type" />
                               <Label layoutX="159.0" layoutY="98.0" text="Item Type" />
                               <ChoiceBox fx:id="cbFTestItemType" layoutX="157.0" layoutY="115.0" prefHeight="25.0" prefWidth="124.0" />
-                              <ChoiceBox fx:id="cbFTestDocumentType" layoutX="402.0" layoutY="8.0" prefWidth="150.0" />
-                              <Label layoutX="316.0" layoutY="12.0" text="Document type" />
+                              <ChoiceBox fx:id="cbFTestDocumentType" layoutX="99.0" layoutY="8.0" prefWidth="150.0" />
+                              <Label layoutX="13.0" layoutY="12.0" text="Document type" />
+                              <ChoiceBox fx:id="cbFTestDisplayParameter" layoutX="119.0" layoutY="219.0" prefHeight="25.0" prefWidth="214.0" />
+                              <Label layoutX="14.0" layoutY="223.0" text="Display parameter" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
