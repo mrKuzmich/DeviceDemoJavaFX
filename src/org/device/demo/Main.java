@@ -34,7 +34,7 @@ public class Main extends Application {
 
     private void showErrorDialog(Thread t, Throwable e) {
       e.printStackTrace();
-      Alert  alert = new Alert(Alert.AlertType.ERROR);
+      Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText(null);
       Throwable th = e.getCause().getCause();

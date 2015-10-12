@@ -19,7 +19,7 @@ public class FiscalPortCommander implements HasarConstants {
   private static final DecimalFormatSymbols defaultDecimalFormatSymbols = new DecimalFormatSymbols() {{setDecimalSeparator('.');}};
   private static final NumberFormat quantityFormat = new DecimalFormat("###############0.000", defaultDecimalFormatSymbols);
   private static final NumberFormat amountFormat = new DecimalFormat("######0.00", defaultDecimalFormatSymbols);
-  private static final NumberFormat taxFormat = new DecimalFormat("###0", defaultDecimalFormatSymbols);
+  private static final NumberFormat taxFormat = new DecimalFormat("#0.00", defaultDecimalFormatSymbols);
 
   private String comPort;
   private int baudRate = 9600;
@@ -108,19 +108,18 @@ public class FiscalPortCommander implements HasarConstants {
   }
 
   public void printLineFiscalDocument(String itemName, Float quantity, Float amount, Float tax,
-                                      TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay, Boolean totalPrice) {
+                                      TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay, TypeSelectItem totalPrice) {
     open();
     try {
       doCommand(CMD_PRINT_LINE_ITEM,
               itemName != null ? truncate(itemName, 25) : null,
               quantity != null ? quantityFormat.format(quantity) : null,
               amount != null ? amountFormat.format(amount) : null,
-              tax != null ? taxFormat.format(tax * 100) : null,
+              tax != null ? taxFormat.format(tax) : null,
               operationType != null ? operationType.getType() : null,
               internalTax != null ? taxFormat.format(internalTax) : null,
               parameterDisplay != null ? parameterDisplay.getType() : null,
-              totalPrice != null && totalPrice ? "T" : "b"
-      );
+              totalPrice != null ? totalPrice.getType() : null);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Line Item command.");
     } finally {
@@ -129,19 +128,18 @@ public class FiscalPortCommander implements HasarConstants {
   }
 
   public void returRecharge(String description, Float amountDiscount, Float tax, TypeSelectItem operationType,
-                            Float internalTax, String displayParameters, Boolean totalPrice, Boolean discount) {
+                            Float internalTax, String displayParameters, TypeSelectItem totalPrice, TypeSelectItem discount) {
     open();
     try {
       doCommand(CMD_RETURN_RECHARGE,
               description != null ? truncate(description, 23) : null,
               amountDiscount != null ? amountFormat.format(amountDiscount) : null,
-              tax != null ? taxFormat.format(tax * 100) : null,
+              tax != null ? taxFormat.format(tax) : null,
               operationType != null ? operationType.getType() : null,
               internalTax != null ? taxFormat.format(internalTax) : null,
               displayParameters != null ? truncate(displayParameters, 1) : null,
-              totalPrice != null && totalPrice ? "T" : "*",
-              discount != null && discount ? "B" : "*"
-              );
+              totalPrice != null ? totalPrice.getType()  : null,
+              discount != null ? discount.getType() : null);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Return Recharge command.");
     } finally {
@@ -164,6 +162,31 @@ public class FiscalPortCommander implements HasarConstants {
     open();
     try {
       doCommand(CMD_CANCEL_DOCUMENT);
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void subtotalFiscalDocument(TypeSelectItem printingOptions) {
+    open();
+    try {
+      doCommand(CMD_SUBTOTAL, printingOptions.getType(), "X");
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Subtotal Fiscal Document command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void generalDiscountFiscalDocument(String description, Float amount, TypeSelectItem operationType) {
+    open();
+    try {
+      doCommand(CMD_GENERAL_DISCOUNT,
+          truncate(description, 28),
+          amountFormat.format(amount),
+          operationType.getType());
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
     } finally {

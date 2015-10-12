@@ -1,5 +1,6 @@
 package org.device.demo;
 
+import com.sun.istack.internal.Nullable;
 import com.taliter.fiscal.device.FiscalPacket;
 import com.taliter.fiscal.port.rxtx.RXTXFiscalPort;
 import javafx.application.Platform;
@@ -15,31 +16,35 @@ import javafx.scene.control.TextField;
 public class Controller {
   static ObservableList<String> comPorts = null;
   final static ObservableList<Integer> baudRates = FXCollections.observableArrayList(
-          300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200, 230400);
+      300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200, 230400);
   final static ObservableList<FiscalPortCommander.TypeSelectItem> OPERATION_TYPES = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("M", "Add Amount"),
-          new FiscalPortCommander.TypeSelectItem("m", "Void Amount"));
+      new FiscalPortCommander.TypeSelectItem("M", "Add Amount"),
+      new FiscalPortCommander.TypeSelectItem("m", "Void Amount"));
   final static ObservableList<FiscalPortCommander.TypeSelectItem> DOCUMENT_TYPES = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("T", "Ticket"),
-          new FiscalPortCommander.TypeSelectItem("A", "Ticket Bill \"A\""),
-          new FiscalPortCommander.TypeSelectItem("B", "Ticket Bill \"B/C\""),
-          new FiscalPortCommander.TypeSelectItem("D", "Debit note \"A\""),
-          new FiscalPortCommander.TypeSelectItem("E", "Debit note \"B/C\""));
+      new FiscalPortCommander.TypeSelectItem("T", "Ticket"),
+      new FiscalPortCommander.TypeSelectItem("A", "Ticket Bill \"A\""),
+      new FiscalPortCommander.TypeSelectItem("B", "Ticket Bill \"B/C\""),
+      new FiscalPortCommander.TypeSelectItem("D", "Debit note \"A\""),
+      new FiscalPortCommander.TypeSelectItem("E", "Debit note \"B/C\""));
   final static ObservableList<FiscalPortCommander.TypeSelectItem> DISPLAY_PARAMETERS = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("0", "No changes"),
-          new FiscalPortCommander.TypeSelectItem("1", "Write display"),
-          new FiscalPortCommander.TypeSelectItem("2", "Increase repetitions subfield"));
+      new FiscalPortCommander.TypeSelectItem("0", "No changes"),
+      new FiscalPortCommander.TypeSelectItem("1", "Write display"),
+      new FiscalPortCommander.TypeSelectItem("2", "Increase repetitions subfield"));
   final static ObservableList<FiscalPortCommander.TypeSelectItem> QUALIFIER_PRICE_OPERATION = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("T", "Total price"),
-          new FiscalPortCommander.TypeSelectItem("X", "Net price"));
+      new FiscalPortCommander.TypeSelectItem("T", "Total price"),
+      new FiscalPortCommander.TypeSelectItem("X", "Net price"));
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> PRINTING_OPTIONS = FXCollections.observableArrayList(
+      new FiscalPortCommander.TypeSelectItem("P", "Print subtotal"),
+      new FiscalPortCommander.TypeSelectItem("X", "No printing"));
 
-          final static String IT_SALE = "Normal Sale";
-          final static String IT_RECHARGE_DISCOUNT = "Recharge/Discount";
-          final static String IT_BOTTLE_DISCOUNT = "Bottle";
+  final static FiscalPortCommander.TypeSelectItem IT_SALE =
+      new FiscalPortCommander.TypeSelectItem("X", "Normal Sale");
+  final static FiscalPortCommander.TypeSelectItem IT_RECHARGE_DISCOUNT =
+      new FiscalPortCommander.TypeSelectItem("B", "Recharge/Discount");
+  final static FiscalPortCommander.TypeSelectItem IT_BOTTLE_DISCOUNT =
+      new FiscalPortCommander.TypeSelectItem("X", "Bottle");
   final static ObservableList<FiscalPortCommander.TypeSelectItem> QUALIFIER_OPERATION = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("X", IT_SALE),
-          new FiscalPortCommander.TypeSelectItem("B", IT_RECHARGE_DISCOUNT),
-          new FiscalPortCommander.TypeSelectItem("X", IT_BOTTLE_DISCOUNT));
+      IT_SALE, IT_RECHARGE_DISCOUNT, IT_BOTTLE_DISCOUNT);
 
   private FiscalPortCommander fiscalPort;
   @FXML
@@ -61,13 +66,15 @@ public class Controller {
   @FXML
   private TextField tfFTestQuantity;
   @FXML
-  private TextField tfFTestPrice;
+  private TextField tfFTestPriceAmount;
   @FXML
   private TextField tfFTestTax;
   @FXML
-  private CheckBox cbFTestTotalPrice;
+  private TextField tfFTestInternalAmount;
   @FXML
-  private TextField tfFTestAmount;
+  private TextField tfFTestRechargeDiscountName;
+  @FXML
+  private TextField tfFTestRechargeDiscountAmount;
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestOperationType;
   @FXML
@@ -76,6 +83,10 @@ public class Controller {
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestQualifierPriceOperation;
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestQualifierOperation;
+  @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestSubtotalOption;
+  @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestGeneralAddOperation;
 
   @FXML
   private void actionDemoDeviceExit() {
@@ -106,13 +117,21 @@ public class Controller {
   private void actionFiscalDocumentSendItem() {
     initFiscalPort();
     if (IT_SALE.equals(cbFTestQualifierOperation.getValue()))
-      fiscalPort.printLineFiscalDocument(tfFTestItemName.getText(), Float.valueOf(tfFTestQuantity.getText()), Float.valueOf(tfFTestPrice.getText()),
-              Float.valueOf(tfFTestTax.getText()), cbFTestOperationType.getValue(), Float.valueOf(tfFTestAmount.getText()),
-              cbFTestDisplayParameter.getValue(), cbFTestTotalPrice.isSelected());
+      fiscalPort.printLineFiscalDocument(tfFTestItemName.getText(),
+          getFieldAsFloat(tfFTestQuantity.getText(), "Quantity"),
+          getFieldAsFloat(tfFTestPriceAmount.getText(), "Price/Amount"),
+          getFieldAsFloat(tfFTestTax.getText(), "Tax %"),
+          cbFTestOperationType.getValue(),
+          getFieldAsFloat(tfFTestInternalAmount.getText(), "Internal Tax amount"), null,
+          cbFTestQualifierPriceOperation.getValue());
     else if (IT_RECHARGE_DISCOUNT.equals(cbFTestQualifierOperation.getValue()) || IT_BOTTLE_DISCOUNT.equals(cbFTestQualifierOperation.getValue()))
-      fiscalPort.returRecharge(tfFTestItemName.getText(), Float.valueOf(tfFTestAmount.getText()), Float.valueOf(tfFTestTax.getText()),
-              cbFTestOperationType.getValue(), Float.valueOf(tfFTestAmount.getText()), cbFTestDisplayParameter.getValue().getType(),
-              cbFTestTotalPrice.isSelected(), true);
+      fiscalPort.returRecharge(tfFTestItemName.getText(),
+          getFieldAsFloat(tfFTestPriceAmount.getText(), "Price/Amount"),
+          getFieldAsFloat(tfFTestTax.getText(), "Tax %"),
+          cbFTestOperationType.getValue(),
+          getFieldAsFloat(tfFTestInternalAmount.getText(), "Internal Tax amount"), null,
+          cbFTestQualifierPriceOperation.getValue(),
+          cbFTestQualifierOperation.getValue());
   }
 
   @FXML
@@ -121,6 +140,9 @@ public class Controller {
 
   @FXML
   private void actionFiscalDocumentGeneralDiscountRecharge() {
+    initFiscalPort();
+    fiscalPort.generalDiscountFiscalDocument(tfFTestRechargeDiscountName.getText(),
+        getFieldAsFloat(tfFTestRechargeDiscountAmount.getText(), "Amount"), cbFTestGeneralAddOperation.getValue()) ;
   }
 
   @FXML
@@ -129,6 +151,8 @@ public class Controller {
 
   @FXML
   private void actionFiscalDocumentSubtotal() {
+    initFiscalPort();
+    fiscalPort.subtotalFiscalDocument(cbFTestSubtotalOption.getValue());
   }
 
   @FXML
@@ -199,6 +223,13 @@ public class Controller {
     cbFTestQualifierPriceOperation.setValue(QUALIFIER_PRICE_OPERATION.get(0));
     cbFTestQualifierOperation.setItems(QUALIFIER_OPERATION);
     cbFTestQualifierOperation.setValue(QUALIFIER_OPERATION.get(0));
+
+    cbFTestSubtotalOption.setItems(PRINTING_OPTIONS);
+    cbFTestSubtotalOption.setValue(PRINTING_OPTIONS.get(0));
+
+    cbFTestGeneralAddOperation.setItems(OPERATION_TYPES);
+    cbFTestGeneralAddOperation.setValue(OPERATION_TYPES.get(0));
+
     fiscalPort.setRequestListener(new FiscalPortCommander.FiscalPacketListener() {
       @Override
       public void invoke(FiscalPacket packet) {
@@ -220,6 +251,19 @@ public class Controller {
     if (comPorts == null)
       comPorts = FXCollections.observableArrayList(RXTXFiscalPort.getPortNames());
     return comPorts;
+  }
+
+  private Float getFloat(@Nullable String value) {
+    return value != null && !value.isEmpty() ? Float.valueOf(value) : null;
+  }
+
+  private Float getFieldAsFloat(String value, String fieldName) {
+    try {
+      return getFloat(value);
+    } catch (NumberFormatException e) {
+      new UserFormException("Incorrect number format at field \"%s\"", fieldName);
+    }
+    return null;
   }
 
 }
