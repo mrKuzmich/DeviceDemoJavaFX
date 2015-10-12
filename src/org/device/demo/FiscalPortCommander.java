@@ -150,11 +150,22 @@ public class FiscalPortCommander implements HasarConstants {
   }
 
   public void closeFiscalDocument() {
+    open();
     try {
-      open();
       doCommand(CMD_CLOSE_FD, 1);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Close Fiscal Document command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void cancelFiscalDocument() {
+    open();
+    try {
+      doCommand(CMD_CANCEL_DOCUMENT);
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
     } finally {
       close();
     }

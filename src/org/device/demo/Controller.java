@@ -29,15 +29,17 @@ public class Controller {
           new FiscalPortCommander.TypeSelectItem("0", "No changes"),
           new FiscalPortCommander.TypeSelectItem("1", "Write display"),
           new FiscalPortCommander.TypeSelectItem("2", "Increase repetitions subfield"));
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> QUALIFIER_PRICE_OPERATION = FXCollections.observableArrayList(
+          new FiscalPortCommander.TypeSelectItem("T", "Total price"),
+          new FiscalPortCommander.TypeSelectItem("X", "Net price"));
 
-  final static String IT_SALE = "Sale";
-  final static String IT_BOTTLE_DISCOUNT = "Bottle Discount";
-  final static String IT_ITEM_DISCOUNT = "Item Discount";
-  final static String IT_ITEM_RECHARGE = "Item Recharge";
-
-  final static ObservableList<String> ITEM_TYPES = FXCollections.observableArrayList(
-          IT_SALE, IT_BOTTLE_DISCOUNT, IT_ITEM_DISCOUNT, IT_ITEM_RECHARGE);
-
+          final static String IT_SALE = "Normal Sale";
+          final static String IT_RECHARGE_DISCOUNT = "Recharge/Discount";
+          final static String IT_BOTTLE_DISCOUNT = "Bottle";
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> QUALIFIER_OPERATION = FXCollections.observableArrayList(
+          new FiscalPortCommander.TypeSelectItem("X", IT_SALE),
+          new FiscalPortCommander.TypeSelectItem("B", IT_RECHARGE_DISCOUNT),
+          new FiscalPortCommander.TypeSelectItem("X", IT_BOTTLE_DISCOUNT));
 
   private FiscalPortCommander fiscalPort;
   @FXML
@@ -69,44 +71,104 @@ public class Controller {
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestOperationType;
   @FXML
-  private ChoiceBox<String> cbFTestItemType;
-  @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestDisplayParameter;
+  @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestQualifierPriceOperation;
+  @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestQualifierOperation;
 
   @FXML
-  private void close() {
+  private void actionDemoDeviceExit() {
     Platform.exit();
   }
 
   @FXML
-  private void accept() {
+  private void actionPrinterStatus() {
+  }
+
+  @FXML
+  private void actionOptionAccept() {
     initFiscalPort();
     fiscalPort.statusRequest();
   }
 
   @FXML
-  private void fiscalDocumentOpen() {
+  private void actionSetCustomerData() {
+  }
+
+  @FXML
+  private void actionFiscalDocumentOpen() {
     initFiscalPort();
     fiscalPort.openFiscalDocument(cbFTestDocumentType.getValue());
   }
 
   @FXML
-  private void fiscalDocumentSend() {
+  private void actionFiscalDocumentSendItem() {
     initFiscalPort();
-    if (IT_SALE.equals(cbFTestItemType.getValue()))
+    if (IT_SALE.equals(cbFTestQualifierOperation.getValue()))
       fiscalPort.printLineFiscalDocument(tfFTestItemName.getText(), Float.valueOf(tfFTestQuantity.getText()), Float.valueOf(tfFTestPrice.getText()),
               Float.valueOf(tfFTestTax.getText()), cbFTestOperationType.getValue(), Float.valueOf(tfFTestAmount.getText()),
               cbFTestDisplayParameter.getValue(), cbFTestTotalPrice.isSelected());
-    else if (IT_BOTTLE_DISCOUNT.equals(cbFTestItemType.getValue()))
+    else if (IT_RECHARGE_DISCOUNT.equals(cbFTestQualifierOperation.getValue()) || IT_BOTTLE_DISCOUNT.equals(cbFTestQualifierOperation.getValue()))
       fiscalPort.returRecharge(tfFTestItemName.getText(), Float.valueOf(tfFTestAmount.getText()), Float.valueOf(tfFTestTax.getText()),
               cbFTestOperationType.getValue(), Float.valueOf(tfFTestAmount.getText()), cbFTestDisplayParameter.getValue().getType(),
               cbFTestTotalPrice.isSelected(), true);
   }
 
   @FXML
-  private void fiscalDocumentClose() {
+  private void actionFiscalDocumentSendText() {
+  }
+
+  @FXML
+  private void actionFiscalDocumentGeneralDiscountRecharge() {
+  }
+
+  @FXML
+  private void actionFiscalDocumentTender() {
+  }
+
+  @FXML
+  private void actionFiscalDocumentSubtotal() {
+  }
+
+  @FXML
+  private void actionFiscalDocumentCancel() {
+    initFiscalPort();
+    fiscalPort.cancelFiscalDocument();
+  }
+
+  @FXML
+  private void actionFiscalDocumentClose() {
     initFiscalPort();
     fiscalPort.closeFiscalDocument();
+  }
+
+  @FXML
+  private void actionNonFiscalDocumentOpen() {
+  }
+
+  @FXML
+  private void actionNonFiscalDocumentSendText() {
+  }
+
+  @FXML
+  private void actionNonFiscalDocumentCancel() {
+  }
+
+  @FXML
+  private void actionNonFiscalDocumentClose() {
+  }
+
+  @FXML
+  private void actionReporteX() {
+  }
+
+  @FXML
+  private void actionReporteZ() {
+  }
+
+  @FXML
+  private void actionAuditSend() {
   }
 
   public void initFiscalPort() {
@@ -129,10 +191,14 @@ public class Controller {
     cbFTestDocumentType.setValue(DOCUMENT_TYPES.get(0));
     cbFTestOperationType.setItems(OPERATION_TYPES);
     cbFTestOperationType.setValue(OPERATION_TYPES.get(0));
-    cbFTestItemType.setItems(ITEM_TYPES);
-    cbFTestItemType.setValue(ITEM_TYPES.get(0));
+/* not implemented in this version
     cbFTestDisplayParameter.setItems(DISPLAY_PARAMETERS);
     cbFTestDisplayParameter.setValue(DISPLAY_PARAMETERS.get(0));
+*/
+    cbFTestQualifierPriceOperation.setItems(QUALIFIER_PRICE_OPERATION);
+    cbFTestQualifierPriceOperation.setValue(QUALIFIER_PRICE_OPERATION.get(0));
+    cbFTestQualifierOperation.setItems(QUALIFIER_OPERATION);
+    cbFTestQualifierOperation.setValue(QUALIFIER_OPERATION.get(0));
     fiscalPort.setRequestListener(new FiscalPortCommander.FiscalPacketListener() {
       @Override
       public void invoke(FiscalPacket packet) {

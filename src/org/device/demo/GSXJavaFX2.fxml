@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.8374613003095975" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="648.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.device.demo.Controller">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="479.0" prefWidth="692.0">
+         <children>
+            <TabPane prefHeight="359.0" prefWidth="637.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                  <Tab text="Options">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <CheckBox fx:id="cbSaveLog" layoutX="467.0" layoutY="299.0" mnemonicParsing="false" text="Save Log" />
+                              <Label layoutX="14.0" layoutY="14.0" text="Ports" />
+                              <Label layoutX="176.0" layoutY="14.0" text="Baud Rate" />
+                              <ChoiceBox fx:id="cbComPort" layoutX="48.0" layoutY="10.0" prefHeight="23.0" prefWidth="106.0" />
+                              <ChoiceBox fx:id="cbBaudRates" layoutX="236.0" layoutY="10.0" prefHeight="23.0" prefWidth="123.0" />
+                              <Button layoutX="558.0" layoutY="299.0" mnemonicParsing="false" onAction="#actionOptionAccept" prefHeight="50.0" prefWidth="80.0" text="ACCEPT">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Fiscal Test">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="574.0" layoutY="8.0" mnemonicParsing="false" onAction="#actionFiscalDocumentOpen" prefHeight="50.0" prefWidth="80.0" text="Open" textFill="#3016c6">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Button>
+                              <Separator layoutX="-2.0" layoutY="170.0" prefHeight="4.0" prefWidth="691.0" />
+                              <Label layoutX="13.0" layoutY="71.0" prefHeight="15.0" prefWidth="73.0" text="Item Name" />
+                              <TextField fx:id="tfFTestItemName" layoutX="13.0" layoutY="87.0" prefHeight="25.0" prefWidth="236.0" />
+                              <TextField fx:id="tfFTestQuantity" layoutX="276.0" layoutY="88.0" prefHeight="25.0" prefWidth="80.0" />
+                              <TextField fx:id="tfFTestPriceAmount" layoutX="377.0" layoutY="87.0" prefHeight="25.0" prefWidth="94.0" />
+                              <Label layoutX="274.0" layoutY="71.0" text="Quantity" />
+                              <Label layoutX="377.0" layoutY="66.0" prefHeight="25.0" prefWidth="94.0" text="Price / Amount" wrapText="true" />
+                              <Label layoutX="491.0" layoutY="70.0" prefHeight="15.0" prefWidth="45.0" text="Tax %" />
+                              <TextField fx:id="tfFTestTax" layoutX="491.0" layoutY="88.0" prefHeight="25.0" prefWidth="61.0" />
+                              <Label layoutX="274.0" layoutY="177.0" text="Extra Description " />
+                              <TextField fx:id="tfFTestExtraText" layoutX="275.0" layoutY="202.0" prefHeight="25.0" prefWidth="268.0" />
+                              <Button layoutX="574.0" layoutY="76.0" mnemonicParsing="false" onAction="#actionFiscalDocumentSendItem" prefHeight="50.0" prefWidth="80.0" text="Send Item" textFill="#3016c6" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Button>
+                              <Button layoutX="574.0" layoutY="407.0" mnemonicParsing="false" onAction="#actionFiscalDocumentCancel" prefHeight="25.0" prefWidth="80.0" text="Cancel" textFill="#e80000">
+								<font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font></Button>
+                              <Button layoutX="576.0" layoutY="310.0" mnemonicParsing="false" onAction="#actionFiscalDocumentTender" prefHeight="38.0" prefWidth="79.0" text="TENDER" textFill="#3016c6">
+								<font>
+				                    <Font name="System Bold" size="12.0" />
+                                </font>
+                              </Button>
+                              <Label layoutX="14.0" layoutY="300.0" text="Payment Name" />
+                              <TextField fx:id="tfFTestPaymentName" layoutX="13.0" layoutY="317.0" prefHeight="25.0" prefWidth="269.0" />
+                              <TextField fx:id="tfFTestPaymentAmount" layoutX="297.0" layoutY="317.0" prefHeight="25.0" prefWidth="85.0" />
+                              <Button layoutX="575.0" layoutY="453.0" mnemonicParsing="false" onAction="#actionFiscalDocumentClose" prefHeight="50.0" prefWidth="81.0" text="FINALIZE" textFill="#3016c6">
+								<font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font></Button>
+                              <TextField fx:id="tfFTestInternalAmount" layoutX="14.0" layoutY="137.0" prefHeight="25.0" prefWidth="108.0" />
+							  
+                              <Label layoutX="13.0" layoutY="12.0" text="Document type" />
+                              <Label layoutX="14.0" layoutY="118.0" prefHeight="17.0" prefWidth="117.0" text="Internal Tax amount" />
+                              <Button layoutX="574.0" layoutY="177.0" mnemonicParsing="false" onAction="#actionFiscalDocumentSendText" prefHeight="50.0" prefWidth="80.0" text="Send Text" textFill="#3016c6" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Separator layoutY="236.0" prefHeight="3.0" prefWidth="685.0" />
+                              <Separator layoutY="290.0" prefHeight="1.0" prefWidth="683.0" />
+                              <MenuButton fx:id="cbFTestTenderOperation" layoutX="396.0" layoutY="317.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Tender Operation">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Payment Total/Partial" />
+                                    <MenuItem mnemonicParsing="false" text="Cancel" />
+                                    <MenuItem mnemonicParsing="false" text="Pay Back" />
+                                 </items>
+                              </MenuButton>
+                              <Label layoutX="295.0" layoutY="300.0" prefHeight="17.0" prefWidth="101.0" text="Payment Amount" />
+                              <Button layoutX="260.0" layoutY="8.0" mnemonicParsing="false" onAction="#actionSetCustomerData" prefHeight="46.0" prefWidth="106.0" text="Set Customer Data" textFill="#002202" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Separator layoutY="64.0" prefHeight="3.0" prefWidth="685.0" />
+                              <Button layoutX="575.0" layoutY="360.0" mnemonicParsing="false" onAction="#actionFiscalDocumentSubtotal" prefHeight="38.0" prefWidth="80.0" text="SUBTOTAL" textFill="#3016c6">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <MenuButton fx:id="cbFTestSubtotalOption" layoutX="396.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Printing options">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Print subtotal" />
+                                    <MenuItem mnemonicParsing="false" text="No printing" />
+                                 </items>
+                              </MenuButton>
+                              <Separator layoutX="-1.0" layoutY="400.0" prefHeight="3.0" prefWidth="685.0" />
+                              <Label layoutX="295.0" layoutY="239.0" prefHeight="17.0" prefWidth="101.0" text="Amount" />
+                              <MenuButton fx:id="cbFTestGeneralAddOperation" layoutX="396.0" layoutY="242.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="158.0" text="General Discount Recharge Operation" wrapText="true">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Add Operation" />
+                                    <MenuItem mnemonicParsing="false" text="Void Operation" />
+                                 </items>
+                              </MenuButton>
+                              <TextField fx:id="tfFTestRechargeDiscountAmount" layoutX="294.0" layoutY="259.0" prefHeight="25.0" prefWidth="88.0" />
+                              <TextField fx:id="tfFTestRechargeDiscountName" layoutX="14.0" layoutY="259.0" prefHeight="25.0" prefWidth="269.0" />
+                              <Label layoutX="14.0" layoutY="239.0" text="General Discount/Recharge Name" />
+                              <Button layoutX="573.0" layoutY="240.0" mnemonicParsing="false" onAction="#actionFiscalDocumentGeneralDiscountRecharge" prefHeight="46.0" prefWidth="79.0" text="General Discount Recharge" textFill="#3016c6" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <ChoiceBox fx:id="cbFTestOperationType" layoutX="131.0" layoutY="137.0" prefHeight="25.0" prefWidth="141.0" />
+                              <ChoiceBox fx:id="cbFTestDocumentType" layoutX="102.0" layoutY="8.0" prefWidth="150.0" />
+                              <Label layoutX="131.0" layoutY="118.0" text="OperationType" />
+                              <ChoiceBox fx:id="cbFTestQualifierPriceOperation" layoutX="281.0" layoutY="137.0" prefHeight="25.0" prefWidth="128.0" />
+                              <Label layoutX="279.0" layoutY="118.0" text="Qualifier Price Type" />
+                              <ChoiceBox fx:id="cbFTestQualifierOperation" layoutX="419.0" layoutY="137.0" prefHeight="25.0" prefWidth="133.0" />
+                              <Label layoutX="419.0" layoutY="118.0" text="Qualifier Operation" />
+                           </children>
+						</AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="NonFiscal Test">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="571.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentOpen" prefHeight="50.0" prefWidth="80.0" text="Open">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Button>
+                              <TextArea layoutX="14.0" layoutY="85.0" prefHeight="59.0" prefWidth="497.0" />
+                              <Button layoutX="571.0" layoutY="90.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentSendText" prefHeight="50.0" prefWidth="80.0" text="Send Text">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Button>
+                              <CheckBox layoutX="14.0" layoutY="155.0" mnemonicParsing="false" text="Doble Wide" />
+                              <Button layoutX="571.0" layoutY="292.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentClose" prefHeight="50.0" prefWidth="80.0" text="FINALIZE">
+								<font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font></Button>
+                              <Button layoutX="571.0" layoutY="247.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentCancel" prefHeight="25.0" prefWidth="80.0" text="Cancel">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Button>
+							  </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Reports">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="530.0" layoutY="22.0" mnemonicParsing="false" onAction="#actionReporteX" prefHeight="51.0" prefWidth="138.0" text="X REPORTS">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                  </font></Button>
+               
+                              <Button layoutX="530.0" layoutY="89.0" mnemonicParsing="false" onAction="#actionReporteZ" prefHeight="60.0" prefWidth="142.0" text="Z CLOSE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
+               
+                              <Label layoutX="22.0" layoutY="188.0" prefHeight="15.0" prefWidth="101.0" text="FISCAL AUDIT" underline="true">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="531.0" layoutY="245.0" mnemonicParsing="false" onAction="#actionAuditSend" prefHeight="39.0" prefWidth="141.0" text="AUDIT SEND">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                                   </font></Button>
+                              <TextField layoutX="214.0" layoutY="252.0" prefHeight="23.0" prefWidth="62.0" />
+                              <DatePicker layoutX="94.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
+                              <DatePicker layoutX="216.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
+                              <TextField layoutX="96.0" layoutY="252.0" prefHeight="23.0" prefWidth="61.0" />
+                              <CheckBox layoutX="22.0" layoutY="256.0" mnemonicParsing="false" text="BY Z" />
+                              <CheckBox layoutX="22.0" layoutY="311.0" mnemonicParsing="false" text="BY DATE" />
+                              <Separator layoutX="-2.0" layoutY="181.0" prefHeight="0.0" prefWidth="688.0" />
+                              <Label layoutX="96.0" layoutY="232.0" text="start #" />
+                              <Label layoutX="216.0" layoutY="232.0" text="end #" />
+                              <Label layoutX="96.0" layoutY="291.0" text="start" />
+                              <Label layoutX="216.0" layoutY="291.0" text="end" />
+                              <MenuButton fx:id="cbFTestAddOperationType2" layoutX="358.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="Printing options">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Print Summarized" />
+                                    <MenuItem mnemonicParsing="false" text="Print Detail" />
+                                 </items>
+                              </MenuButton>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Button layoutX="582.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionDemoDeviceExit" prefHeight="25.0" prefWidth="61.0" text="EXIT" textFill="#b50808">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="7.0" prefHeight="17.0" prefWidth="94.0" text="Printer Response" textFill="#12078d" />
+            <Label layoutX="297.0" prefHeight="15.0" prefWidth="73.0" text="Printer Status" textFill="#12078d" />
+            <TextArea fx:id="tfPrinterRequest" editable="false" layoutX="7.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" wrapText="true" />
+            <TextArea fx:id="tfPrinterStatus" layoutX="297.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" />
+            <Button layoutX="582.0" layoutY="17.0" mnemonicParsing="false" onAction="#actionPrinterStatus" text="STATUS" textFill="#36608f">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></AnchorPane>
+  </items>
+</SplitPane>
