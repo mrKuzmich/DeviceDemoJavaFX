@@ -36,6 +36,10 @@ public class Controller {
   final static ObservableList<FiscalPortCommander.TypeSelectItem> PRINTING_OPTIONS = FXCollections.observableArrayList(
       new FiscalPortCommander.TypeSelectItem("P", "Print subtotal"),
       new FiscalPortCommander.TypeSelectItem("X", "No printing"));
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> TENDER_OPERATION = FXCollections.observableArrayList(
+      new FiscalPortCommander.TypeSelectItem("C", "Cancel"),
+      new FiscalPortCommander.TypeSelectItem("P", "Payment Total/Partial"),
+      new FiscalPortCommander.TypeSelectItem("R", "Pay Back"));
 
   final static FiscalPortCommander.TypeSelectItem IT_SALE =
       new FiscalPortCommander.TypeSelectItem("X", "Normal Sale");
@@ -76,6 +80,12 @@ public class Controller {
   @FXML
   private TextField tfFTestRechargeDiscountAmount;
   @FXML
+  private TextField tfFTestExtraText;
+  @FXML
+  private TextField tfFTestPaymentName;
+  @FXML
+  private TextField tfFTestPaymentAmount;
+  @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestOperationType;
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestDisplayParameter;
@@ -87,6 +97,8 @@ public class Controller {
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestSubtotalOption;
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestGeneralAddOperation;
+  @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestTenderOperation;
 
   @FXML
   private void actionDemoDeviceExit() {
@@ -125,7 +137,7 @@ public class Controller {
           getFieldAsFloat(tfFTestInternalAmount.getText(), "Internal Tax amount"), null,
           cbFTestQualifierPriceOperation.getValue());
     else if (IT_RECHARGE_DISCOUNT.equals(cbFTestQualifierOperation.getValue()) || IT_BOTTLE_DISCOUNT.equals(cbFTestQualifierOperation.getValue()))
-      fiscalPort.returRecharge(tfFTestItemName.getText(),
+      fiscalPort.returnRecharge(tfFTestItemName.getText(),
           getFieldAsFloat(tfFTestPriceAmount.getText(), "Price/Amount"),
           getFieldAsFloat(tfFTestTax.getText(), "Tax %"),
           cbFTestOperationType.getValue(),
@@ -136,6 +148,8 @@ public class Controller {
 
   @FXML
   private void actionFiscalDocumentSendText() {
+    initFiscalPort();
+    fiscalPort.printFiscalText(tfFTestExtraText.getText());
   }
 
   @FXML
@@ -147,6 +161,9 @@ public class Controller {
 
   @FXML
   private void actionFiscalDocumentTender() {
+    initFiscalPort();
+    fiscalPort.totalTender(tfFTestPaymentName.getText(),
+        getFieldAsFloat(tfFTestPaymentAmount.getText(), "Payment Amount"), cbFTestTenderOperation.getValue());
   }
 
   @FXML
@@ -229,6 +246,9 @@ public class Controller {
 
     cbFTestGeneralAddOperation.setItems(OPERATION_TYPES);
     cbFTestGeneralAddOperation.setValue(OPERATION_TYPES.get(0));
+
+    cbFTestTenderOperation.setItems(TENDER_OPERATION);
+    cbFTestTenderOperation.setValue(TENDER_OPERATION.get(0));
 
     fiscalPort.setRequestListener(new FiscalPortCommander.FiscalPacketListener() {
       @Override
