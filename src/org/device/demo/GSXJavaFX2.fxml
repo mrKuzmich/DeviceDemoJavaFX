@@ -128,12 +128,12 @@
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Button>
-                              <TextArea layoutX="14.0" layoutY="85.0" prefHeight="59.0" prefWidth="497.0" />
+                              <TextArea fx:id="tfNonFiscalText" layoutX="14.0" layoutY="85.0" prefHeight="59.0" prefWidth="497.0" />
                               <Button layoutX="571.0" layoutY="90.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentSendText" prefHeight="50.0" prefWidth="80.0" text="Send Text">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Button>
-                              <CheckBox layoutX="14.0" layoutY="155.0" mnemonicParsing="false" text="Doble Wide" />
+                              <CheckBox disable="true" layoutX="14.0" layoutY="155.0" mnemonicParsing="false" text="Doble Wide" />
                               <Button layoutX="571.0" layoutY="292.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentClose" prefHeight="50.0" prefWidth="80.0" text="FINALIZE">
 								<font>
                                     <Font name="System Bold" size="13.0" />
@@ -169,23 +169,23 @@
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                                    </font></Button>
-                              <TextField layoutX="214.0" layoutY="252.0" prefHeight="23.0" prefWidth="62.0" />
-                              <DatePicker layoutX="94.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
-                              <DatePicker layoutX="216.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
-                              <TextField layoutX="96.0" layoutY="252.0" prefHeight="23.0" prefWidth="61.0" />
-                              <CheckBox layoutX="22.0" layoutY="256.0" mnemonicParsing="false" text="BY Z" />
-                              <CheckBox layoutX="22.0" layoutY="311.0" mnemonicParsing="false" text="BY DATE" />
+                              <TextField fx:id="tfFiscalAuditNumEnd" layoutX="214.0" layoutY="252.0" prefHeight="23.0" prefWidth="62.0" />
+                              <DatePicker fx:id="dpFiscalAuditDateStart" layoutX="94.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
+                              <DatePicker fx:id="dpFiscalAuditDateEnd" layoutX="216.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
+                              <TextField fx:id="tfFiscalAuditNumStart" layoutX="96.0" layoutY="252.0" prefHeight="23.0" prefWidth="61.0" />
                               <Separator layoutX="-2.0" layoutY="181.0" prefHeight="0.0" prefWidth="688.0" />
                               <Label layoutX="96.0" layoutY="232.0" text="start #" />
                               <Label layoutX="216.0" layoutY="232.0" text="end #" />
                               <Label layoutX="96.0" layoutY="291.0" text="start" />
                               <Label layoutX="216.0" layoutY="291.0" text="end" />
-                              <MenuButton fx:id="cbFTestAddOperationType2" layoutX="358.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="Printing options">
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Print Summarized" />
-                                    <MenuItem mnemonicParsing="false" text="Print Detail" />
-                                 </items>
-                              </MenuButton>
+                              <RadioButton fx:id="rbFiscalAuditByZ" layoutX="22.0" layoutY="256.0" mnemonicParsing="false" selected="true" text="BY Z">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="BY" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbFiscalAuditByDate" layoutX="22.0" layoutY="315.0" mnemonicParsing="false" text="BY DATE" toggleGroup="$BY" />
+                              <Label layoutX="365.0" layoutY="232.0" text="Printing options" />
+                              <ChoiceBox fx:id="cbReportsPrintingOptions" layoutX="365.0" layoutY="252.0" prefHeight="25.0" prefWidth="139.0" />
                            </children>
                         </AnchorPane>
                     </content>

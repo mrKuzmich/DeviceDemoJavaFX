@@ -7,10 +7,10 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import javax.xml.soap.Text;
+import java.sql.Date;
 
 
 public class Controller {
@@ -33,13 +33,16 @@ public class Controller {
   final static ObservableList<FiscalPortCommander.TypeSelectItem> QUALIFIER_PRICE_OPERATION = FXCollections.observableArrayList(
       new FiscalPortCommander.TypeSelectItem("T", "Total price"),
       new FiscalPortCommander.TypeSelectItem("X", "Net price"));
-  final static ObservableList<FiscalPortCommander.TypeSelectItem> PRINTING_OPTIONS = FXCollections.observableArrayList(
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> SUBTOTAL_PRINTING_OPTIONS = FXCollections.observableArrayList(
       new FiscalPortCommander.TypeSelectItem("P", "Print subtotal"),
       new FiscalPortCommander.TypeSelectItem("X", "No printing"));
   final static ObservableList<FiscalPortCommander.TypeSelectItem> TENDER_OPERATION = FXCollections.observableArrayList(
       new FiscalPortCommander.TypeSelectItem("C", "Cancel"),
       new FiscalPortCommander.TypeSelectItem("P", "Payment Total/Partial"),
       new FiscalPortCommander.TypeSelectItem("R", "Pay Back"));
+  final static ObservableList<FiscalPortCommander.TypeSelectItem> AUDIT_PRINTING_OPTIONS = FXCollections.observableArrayList(
+          new FiscalPortCommander.TypeSelectItem("P", "Print subtotal"),
+          new FiscalPortCommander.TypeSelectItem("X", "No printing"));
 
   final static FiscalPortCommander.TypeSelectItem IT_SALE =
       new FiscalPortCommander.TypeSelectItem("X", "Normal Sale");
@@ -86,6 +89,20 @@ public class Controller {
   @FXML
   private TextField tfFTestPaymentAmount;
   @FXML
+  private TextField tfNonFiscalText;
+  @FXML
+  private RadioButton rbFiscalAuditByZ;
+  @FXML
+  private RadioButton rbFiscalAuditByDate;
+  @FXML
+  private TextField tfFiscalAuditNumStart;
+  @FXML
+  private TextField tfFiscalAuditNumEnd;
+  @FXML
+  private DatePicker dpFiscalAuditDateStart;
+  @FXML
+  private DatePicker dpFiscalAuditDateEnd;
+  @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestOperationType;
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestDisplayParameter;
@@ -99,6 +116,9 @@ public class Controller {
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestGeneralAddOperation;
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbFTestTenderOperation;
+  @FXML
+  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbReportsPrintingOptions;
+
 
   @FXML
   private void actionDemoDeviceExit() {
@@ -107,6 +127,8 @@ public class Controller {
 
   @FXML
   private void actionPrinterStatus() {
+    initFiscalPort();
+    fiscalPort.statusRequest();
   }
 
   @FXML
@@ -175,7 +197,7 @@ public class Controller {
   @FXML
   private void actionFiscalDocumentCancel() {
     initFiscalPort();
-    fiscalPort.cancelFiscalDocument();
+    fiscalPort.cancelDocument();
   }
 
   @FXML
@@ -186,30 +208,51 @@ public class Controller {
 
   @FXML
   private void actionNonFiscalDocumentOpen() {
+    initFiscalPort();
+    fiscalPort.openNfdTicket();
   }
 
   @FXML
   private void actionNonFiscalDocumentSendText() {
+    initFiscalPort();
+    fiscalPort.printNonFiscalText(tfNonFiscalText.getText());
   }
 
   @FXML
   private void actionNonFiscalDocumentCancel() {
+    initFiscalPort();
+    fiscalPort.cancelDocument();
   }
 
   @FXML
   private void actionNonFiscalDocumentClose() {
+    initFiscalPort();
+    fiscalPort.closeNfd();
   }
 
   @FXML
   private void actionReporteX() {
+    initFiscalPort();
+    fiscalPort.dailyClose(true);
   }
 
   @FXML
   private void actionReporteZ() {
+    initFiscalPort();
+    fiscalPort.dailyClose(false);
   }
 
   @FXML
   private void actionAuditSend() {
+    initFiscalPort();
+    if (rbFiscalAuditByZ.isSelected())
+      fiscalPort.dailyCloseByNumber(
+              getFieldAsInteger(tfFiscalAuditNumStart.getText(), "start #"),
+              getFieldAsInteger(tfFiscalAuditNumEnd.getText(), "end #"));
+    else
+      fiscalPort.dailyCloseByDate(
+              Date.valueOf(dpFiscalAuditDateStart.getValue()),
+              Date.valueOf(dpFiscalAuditDateEnd.getValue()));
   }
 
   public void initFiscalPort() {
@@ -241,14 +284,17 @@ public class Controller {
     cbFTestQualifierOperation.setItems(QUALIFIER_OPERATION);
     cbFTestQualifierOperation.setValue(QUALIFIER_OPERATION.get(0));
 
-    cbFTestSubtotalOption.setItems(PRINTING_OPTIONS);
-    cbFTestSubtotalOption.setValue(PRINTING_OPTIONS.get(0));
+    cbFTestSubtotalOption.setItems(SUBTOTAL_PRINTING_OPTIONS);
+    cbFTestSubtotalOption.setValue(SUBTOTAL_PRINTING_OPTIONS.get(0));
 
     cbFTestGeneralAddOperation.setItems(OPERATION_TYPES);
     cbFTestGeneralAddOperation.setValue(OPERATION_TYPES.get(0));
 
     cbFTestTenderOperation.setItems(TENDER_OPERATION);
     cbFTestTenderOperation.setValue(TENDER_OPERATION.get(0));
+
+    cbReportsPrintingOptions.setItems(AUDIT_PRINTING_OPTIONS);
+    cbReportsPrintingOptions.setValue(AUDIT_PRINTING_OPTIONS.get(0));
 
     fiscalPort.setRequestListener(new FiscalPortCommander.FiscalPacketListener() {
       @Override
@@ -275,6 +321,15 @@ public class Controller {
 
   private Float getFloat(@Nullable String value) {
     return value != null && !value.isEmpty() ? Float.valueOf(value) : null;
+  }
+
+  private Integer getFieldAsInteger(String value, String fieldName) {
+    try {
+      return value != null && !value.isEmpty() ? Integer.valueOf(value) : null;
+    } catch (NumberFormatException e) {
+      new UserFormException("Incorrect number format at field \"%s\"", fieldName);
+    }
+    return null;
   }
 
   private Float getFieldAsFloat(String value, String fieldName) {

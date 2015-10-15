@@ -10,6 +10,7 @@ import com.taliter.fiscal.util.LoggerFiscalPortSource;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.util.Date;
 
 /**
  * Created by ������� on 07.10.2015.
@@ -134,11 +135,11 @@ public class FiscalPortCommander implements HasarConstants {
       doCommand(CMD_RETURN_RECHARGE,
               description != null ? truncate(description, 23) : null,
               amountDiscount != null ? amountFormat.format(amountDiscount) : null,
-              tax != null ? taxFormat.format(tax*100) : null,
+              tax != null ? taxFormat.format(tax * 100) : null,
               operationType != null ? operationType.getType() : null,
               internalTax != null ? taxFormat.format(internalTax) : null,
               displayParameters != null ? truncate(displayParameters, 1) : null,
-              totalPrice != null ? totalPrice.getType()  : null,
+              totalPrice != null ? totalPrice.getType() : null,
               discount != null ? discount.getType() : null);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Return Recharge command.");
@@ -169,7 +170,7 @@ public class FiscalPortCommander implements HasarConstants {
     }
   }
 
-  public void cancelFiscalDocument() {
+  public void cancelDocument() {
     open();
     try {
       doCommand(CMD_CANCEL_DOCUMENT);
@@ -219,6 +220,72 @@ public class FiscalPortCommander implements HasarConstants {
     }
   }
 
+  public void openNfdTicket() {
+    open();
+    try {
+      doCommand(CMD_OPEN_NFD_TICKET);
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Open Non Fiscal Document Ticket command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void printNonFiscalText(String text) {
+    open();
+    try {
+      doCommand(CMD_PRINT_NON_FISCAL_TEXT, truncate(text, 80));
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Print Non Fiscal Text command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void closeNfd() {
+    open();
+    try {
+      doCommand(CMD_CLOSE_NFD);
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Close Non Fiscal Document command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void dailyClose(boolean xReport) {
+    open();
+    try {
+      doCommand(CMD_DAILY_CLOSE, xReport ? "X" : "Z");
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void dailyCloseByNumber(Integer start, Integer end) {
+    open();
+    try {
+      doCommand(CMD_DAILY_CLOSE_BY_NUMBER, start, end);
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
+    } finally {
+      close();
+    }
+  }
+
+  public void dailyCloseByDate(Date start, Date end) {
+    open();
+    try {
+      doCommand(CMD_DAILY_CLOSE_BY_NUMBER, start, end);
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
+    } finally {
+      close();
+    }
+  }
+
   private void doCommand(int commandId, Object ... params) throws Exception {
     FiscalPacket request = device.createFiscalPacket();
     request.setCommandCode(commandId);
@@ -236,6 +303,8 @@ public class FiscalPortCommander implements HasarConstants {
           packet.setString(paramsIndex, (String) parameter);
         else if (parameter instanceof Integer)
           packet.setInt(paramsIndex, (Integer) parameter);
+        else if (parameter instanceof Date)
+          packet.setDate(paramsIndex, (Date) parameter);
         else throw new FiscalPortCommandException("Parametr of %s type is not supported.",
                   parameter != null ? parameter.getClass().getName() : "null");
       }
