@@ -89,7 +89,7 @@ public class Controller {
   @FXML
   private TextField tfFTestPaymentAmount;
   @FXML
-  private TextField tfNonFiscalText;
+  private TextArea tfNonFiscalText;
   @FXML
   private RadioButton rbFiscalAuditByZ;
   @FXML
