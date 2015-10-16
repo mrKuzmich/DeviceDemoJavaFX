@@ -1,0 +1,1 @@
+java -cp "lib\RXTXcomm.jar" -Djava.library.path=lib\x64 -jar DeviceDemoJavaFX.jar

@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="DeviceDemoJavaFX">
+    <output-path>$PROJECT_DIR$/out/artifacts/DeviceDemoJavaFX</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="org.device.demo.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="DeviceDemoJavaFX.jar">
+        <element id="module-output" name="DeviceDemoJavaFX" />
+        <element id="module-output" name="Java-Fiscal-Device-API" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/org/device/demo/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+      <element id="directory" name="lib">
+        <element id="dir-copy" path="$PROJECT_DIR$/lib" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/forbuild/run.bat" />
+    </root>
+  </artifact>
+</component>
