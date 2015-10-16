@@ -6,139 +6,99 @@ import javafx.beans.property.*;
  * Created by Dmitry on 16.10.2015.
  */
 public class DocumentOptions {
-  private BooleanProperty bill;
-  private BooleanProperty receipt;
-  private BooleanProperty debitNote;
-  private BooleanProperty creditNote;
+  private Boolean bill = false;
+  private Boolean receipt = false;
+  private Boolean debitNote = false;
+  private Boolean creditNote = false;
 
-  private SimpleObjectProperty<FiscalPortCommander.TypeSelectItem> type;
-  private SimpleObjectProperty<FiscalPortCommander.TypeSelectItem> conditionTax;
-  private SimpleObjectProperty<FiscalPortCommander.TypeSelectItem> document;
+  private FiscalPortCommander.TypeSelectItem type;
+  private FiscalPortCommander.TypeSelectItem conditionTax;
+  private FiscalPortCommander.TypeSelectItem document;
 
-  private LongProperty number;
-  private StringProperty name;
-  private StringProperty address;
+  private String number;
+  private String name;
+  private String address;
 
   public DocumentOptions() {
   }
 
-  public boolean getBill() {
-    return bill.get();
-  }
-
-  public BooleanProperty billProperty() {
+  public Boolean getBill() {
     return bill;
   }
 
-  public void setBill(boolean bill) {
-    this.bill.set(bill);
+  public void setBill(Boolean bill) {
+    this.bill = bill;
   }
 
-  public boolean getReceipt() {
-    return receipt.get();
-  }
-
-  public BooleanProperty receiptProperty() {
+  public Boolean getReceipt() {
     return receipt;
   }
 
-  public void setReceipt(boolean receipt) {
-    this.receipt.set(receipt);
+  public void setReceipt(Boolean receipt) {
+    this.receipt = receipt;
   }
 
-  public boolean getDebitNote() {
-    return debitNote.get();
-  }
-
-  public BooleanProperty debitNoteProperty() {
+  public Boolean getDebitNote() {
     return debitNote;
   }
 
-  public void setDebitNote(boolean debitNote) {
-    this.debitNote.set(debitNote);
+  public void setDebitNote(Boolean debitNote) {
+    this.debitNote = debitNote;
   }
 
-  public boolean getCreditNote() {
-    return creditNote.get();
-  }
-
-  public BooleanProperty creditNoteProperty() {
+  public Boolean getCreditNote() {
     return creditNote;
   }
 
-  public void setCreditNote(boolean creditNote) {
-    this.creditNote.set(creditNote);
+  public void setCreditNote(Boolean creditNote) {
+    this.creditNote = creditNote;
   }
 
   public FiscalPortCommander.TypeSelectItem getType() {
-    return type.get();
-  }
-
-  public SimpleObjectProperty<FiscalPortCommander.TypeSelectItem> typeProperty() {
     return type;
   }
 
   public void setType(FiscalPortCommander.TypeSelectItem type) {
-    this.type.set(type);
+    this.type = type;
   }
 
   public FiscalPortCommander.TypeSelectItem getConditionTax() {
-    return conditionTax.get();
-  }
-
-  public SimpleObjectProperty<FiscalPortCommander.TypeSelectItem> conditionTaxProperty() {
     return conditionTax;
   }
 
   public void setConditionTax(FiscalPortCommander.TypeSelectItem conditionTax) {
-    this.conditionTax.set(conditionTax);
+    this.conditionTax = conditionTax;
   }
 
   public FiscalPortCommander.TypeSelectItem getDocument() {
-    return document.get();
-  }
-
-  public SimpleObjectProperty<FiscalPortCommander.TypeSelectItem> documentProperty() {
     return document;
   }
 
   public void setDocument(FiscalPortCommander.TypeSelectItem document) {
-    this.document.set(document);
+    this.document = document;
   }
 
-  public long getNumber() {
-    return number.get();
-  }
-
-  public LongProperty numberProperty() {
+  public String getNumber() {
     return number;
   }
 
-  public void setNumber(long number) {
-    this.number.set(number);
+  public void setNumber(String number) {
+    this.number = number;
   }
 
   public String getName() {
-    return name.get();
-  }
-
-  public StringProperty nameProperty() {
     return name;
   }
 
   public void setName(String name) {
-    this.name.set(name);
+    this.name = name;
   }
 
   public String getAddress() {
-    return address.get();
-  }
-
-  public StringProperty addressProperty() {
     return address;
   }
 
   public void setAddress(String address) {
-    this.address.set(address);
+    this.address = address;
   }
 }

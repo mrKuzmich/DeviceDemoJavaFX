@@ -8,6 +8,10 @@ public class UserFormException extends RuntimeException {
     super(message);
   }
 
+  public UserFormException(Throwable cause) {
+    super(cause);
+  }
+
   public UserFormException(String message, Object ... params) {
     super(String.format(message, params));
   }

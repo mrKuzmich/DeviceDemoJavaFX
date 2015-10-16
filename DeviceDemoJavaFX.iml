@@ -7,6 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="fiscal-device" />
+    <orderEntry type="module" module-name="Java-Fiscal-Device-API" />
   </component>
 </module>

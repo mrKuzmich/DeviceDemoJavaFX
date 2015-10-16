@@ -119,6 +119,13 @@ public class Controller {
   @FXML
   private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbReportsPrintingOptions;
 
+  private Main mainApplication;
+
+  private DocumentOptions documentOptions;
+
+  public void setMainApplication(Main mainApplication) {
+    this.mainApplication = mainApplication;
+  }
 
   @FXML
   private void actionDemoDeviceExit() {
@@ -139,6 +146,16 @@ public class Controller {
 
   @FXML
   private void actionSetCustomerData() {
+    try {
+      final DocumentOptions newDocumentOptions = mainApplication.showDocOptionsDialog(this.documentOptions);
+      if (newDocumentOptions != null) {
+        this.documentOptions = newDocumentOptions;
+        initFiscalPort();
+        fiscalPort.setCustomerData(this.documentOptions);
+      }
+    } catch (Exception e) {
+      throw new UserFormException(e);
+    }
   }
 
   @FXML

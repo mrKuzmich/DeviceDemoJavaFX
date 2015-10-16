@@ -1,5 +1,6 @@
 package org.device.demo;
 
+import com.sun.istack.internal.NotNull;
 import com.taliter.fiscal.device.FiscalDevice;
 import com.taliter.fiscal.device.FiscalDeviceSource;
 import com.taliter.fiscal.device.FiscalPacket;
@@ -100,7 +101,7 @@ public class FiscalPortCommander implements HasarConstants {
   public void openFiscalDocument(TypeSelectItem documentType) {
     open();
     try {
-      doCommand(CMD_OPEN_FD, documentType != null ? documentType.getType() : "T");
+      doCommand(CMD_OPEN_FD, documentType);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Open Fiscal Report command.");
     } finally {
@@ -117,10 +118,10 @@ public class FiscalPortCommander implements HasarConstants {
               quantity != null ? quantityFormat.format(quantity) : null,
               amount != null ? amountFormat.format(amount) : null,
               tax != null ? taxFormat.format(tax*100) : null,
-              operationType != null ? operationType.getType() : null,
+              operationType,
               internalTax != null ? taxFormat.format(internalTax) : null,
-              parameterDisplay != null ? parameterDisplay.getType() : null,
-              totalPrice != null ? totalPrice.getType() : null);
+              parameterDisplay,
+              totalPrice);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Line Item command.");
     } finally {
@@ -136,11 +137,11 @@ public class FiscalPortCommander implements HasarConstants {
               description != null ? truncate(description, 23) : null,
               amountDiscount != null ? amountFormat.format(amountDiscount) : null,
               tax != null ? taxFormat.format(tax * 100) : null,
-              operationType != null ? operationType.getType() : null,
+              operationType,
               internalTax != null ? taxFormat.format(internalTax) : null,
               displayParameters != null ? truncate(displayParameters, 1) : null,
-              totalPrice != null ? totalPrice.getType() : null,
-              discount != null ? discount.getType() : null);
+              totalPrice,
+              discount);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Return Recharge command.");
     } finally {
@@ -187,7 +188,7 @@ public class FiscalPortCommander implements HasarConstants {
       doCommand(CMD_TOTAL_TENDER,
           truncate(text, 28),
           amount != null ? amountFormat.format(amount) : null,
-          operation.getType()); //todo lacks two parameters
+          operation); //todo lacks two parameters
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Subtotal Fiscal Document command.");
     } finally {
@@ -198,7 +199,7 @@ public class FiscalPortCommander implements HasarConstants {
   public void subtotalFiscalDocument(TypeSelectItem printingOptions) {
     open();
     try {
-      doCommand(CMD_SUBTOTAL, printingOptions.getType(), "X");
+      doCommand(CMD_SUBTOTAL, printingOptions, "X");
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Subtotal Fiscal Document command.");
     } finally {
@@ -212,7 +213,7 @@ public class FiscalPortCommander implements HasarConstants {
       doCommand(CMD_GENERAL_DISCOUNT,
           truncate(description, 28),
           amountFormat.format(amount),
-          operationType.getType());
+          operationType);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
     } finally {
@@ -286,6 +287,19 @@ public class FiscalPortCommander implements HasarConstants {
     }
   }
 
+  public void setCustomerData(@NotNull DocumentOptions documentOptions) {
+    open();
+    try {
+      doCommand(CMD_SET_CUSTOMER_DATA, truncate(documentOptions.getName(), 45), truncate(documentOptions.getNumber(), 11),
+              documentOptions.getConditionTax(), documentOptions.getDocument() != null ? documentOptions.getDocument() : null,
+              documentOptions.getAddress());
+    } catch (Exception e) {
+      throw new FiscalPortCommandException(e, "Error executing of Set Customer Data command.");
+    } finally {
+      close();
+    }
+  }
+
   private void doCommand(int commandId, Object ... params) throws Exception {
     FiscalPacket request = device.createFiscalPacket();
     request.setCommandCode(commandId);
@@ -305,6 +319,8 @@ public class FiscalPortCommander implements HasarConstants {
           packet.setInt(paramsIndex, (Integer) parameter);
         else if (parameter instanceof Date)
           packet.setDate(paramsIndex, (Date) parameter);
+        else if (parameter instanceof TypeSelectItem)
+          packet.setString(paramsIndex, ((TypeSelectItem) parameter).getType());
         else throw new FiscalPortCommandException("Parametr of %s type is not supported.",
                   parameter != null ? parameter.getClass().getName() : "null");
       }
