@@ -29,6 +29,9 @@ public class FiscalPortCommander implements HasarConstants {
   private FiscalPacketListener requestListener;
   private FiscalPacketListener responseListener;
 
+  private FiscalPacket lastRequest;
+  private FiscalPacket lastResponse;
+
   private FiscalDevice device;
 
   public FiscalPortCommander() {
@@ -84,6 +87,14 @@ public class FiscalPortCommander implements HasarConstants {
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error closing Port.");
     }
+  }
+
+  public FiscalPacket getLastRequest() {
+    return lastRequest;
+  }
+
+  public FiscalPacket getLastResponse() {
+    return lastResponse;
   }
 
   public void statusRequest() {
@@ -190,7 +201,7 @@ public class FiscalPortCommander implements HasarConstants {
           amount != null ? amountFormat.format(amount) : null,
           operation); //todo lacks two parameters
     } catch (Exception e) {
-      throw new FiscalPortCommandException(e, "Error executing of Subtotal Fiscal Document command.");
+      throw new FiscalPortCommandException(e, "Error executing of Total Tender command.");
     } finally {
       close();
     }
@@ -199,7 +210,7 @@ public class FiscalPortCommander implements HasarConstants {
   public void subtotalFiscalDocument(TypeSelectItem printingOptions) {
     open();
     try {
-      doCommand(CMD_SUBTOTAL, printingOptions, "X");
+      doCommand(CMD_SUBTOTAL, printingOptions, " ", 0); // 0 it display parameter
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Subtotal Fiscal Document command.");
     } finally {
@@ -265,10 +276,10 @@ public class FiscalPortCommander implements HasarConstants {
     }
   }
 
-  public void dailyCloseByNumber(Integer start, Integer end) {
+  public void dailyCloseByNumber(Integer start, Integer end, TypeSelectItem printingOptions) {
     open();
     try {
-      doCommand(CMD_DAILY_CLOSE_BY_NUMBER, start, end);
+      doCommand(CMD_DAILY_CLOSE_BY_NUMBER, start, end, printingOptions);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
     } finally {
@@ -276,10 +287,10 @@ public class FiscalPortCommander implements HasarConstants {
     }
   }
 
-  public void dailyCloseByDate(Date start, Date end) {
+  public void dailyCloseByDate(Date start, Date end, TypeSelectItem printingOptions) {
     open();
     try {
-      doCommand(CMD_DAILY_CLOSE_BY_NUMBER, start, end);
+      doCommand(CMD_DAILY_CLOSE_BY_DATE, start, end, printingOptions);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
     } finally {
@@ -300,13 +311,14 @@ public class FiscalPortCommander implements HasarConstants {
     }
   }
 
-  private void doCommand(int commandId, Object ... params) throws Exception {
+  private void doCommand(int commandId, Object... params) throws Exception {
     FiscalPacket request = device.createFiscalPacket();
     request.setCommandCode(commandId);
     addPacketParams(request, params);
     if (requestListener != null) requestListener.invoke(request);
-      FiscalPacket response = device.execute(request);
-    if (responseListener != null) responseListener.invoke(response);
+    lastRequest = request;
+    lastResponse = device.execute(request);
+    if (responseListener != null) responseListener.invoke(lastResponse);
   }
 
   private void addPacketParams(FiscalPacket packet, Object... params) {

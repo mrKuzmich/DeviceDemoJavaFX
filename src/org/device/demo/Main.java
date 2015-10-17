@@ -66,6 +66,25 @@ public class Main extends Application {
     return controller.getDocumentOptions();
   }
 
+  public void showSubtotalDialog(Float numberOfItems, Float salesAmount, Float taxAmount, Float amountPaid, Float otherTaxAmount) throws IOException {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.initOwner(primaryStage);
+    alert.setTitle("Subtotal");
+    alert.setHeaderText(null);
+
+    // Load the fxml file and create a new stage for the popup dialog.
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("Subtotal.fxml"));
+    Pane page = (Pane) loader.load();
+
+    SubtotalController controller = loader.getController();
+    controller.init(numberOfItems, salesAmount, taxAmount, amountPaid, otherTaxAmount);
+
+    alert.getDialogPane().setContent(page);
+    alert.showAndWait();
+
+  }
+
   private void showErrorDialog(Thread t, Throwable e) {
     e.printStackTrace();
     Alert alert = new Alert(Alert.AlertType.ERROR);
