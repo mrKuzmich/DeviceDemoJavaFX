@@ -4,7 +4,8 @@ import com.sun.istack.internal.NotNull;
 import com.taliter.fiscal.device.FiscalDevice;
 import com.taliter.fiscal.device.FiscalDeviceSource;
 import com.taliter.fiscal.device.FiscalPacket;
-import com.taliter.fiscal.device.hasar.*;
+import com.taliter.fiscal.device.epson.EpsonFiscalDeviceSource;
+import com.taliter.fiscal.device.epson.*;
 import com.taliter.fiscal.port.rxtx.RXTXFiscalPortSource;
 import com.taliter.fiscal.util.LoggerFiscalPortSource;
 
@@ -16,7 +17,7 @@ import java.util.Date;
 /**
  * Created by ������� on 07.10.2015.
  */
-public class FiscalPortCommander implements HasarConstants {
+public class FiscalPortCommander implements EpsonConstants {
 
   private static final DecimalFormatSymbols defaultDecimalFormatSymbols = new DecimalFormatSymbols() {{setDecimalSeparator('.');}};
   private static final NumberFormat quantityFormat = new DecimalFormat("###############0.000", defaultDecimalFormatSymbols);
@@ -72,7 +73,7 @@ public class FiscalPortCommander implements HasarConstants {
   public void open() {
     try {
       if (comPort == null || comPort.isEmpty()) throw new Exception("Port name is not defined.");
-      FiscalDeviceSource deviceSource = new HasarFiscalDeviceSource(new RXTXFiscalPortSource(comPort));
+      FiscalDeviceSource deviceSource = new EpsonFiscalDeviceSource(new RXTXFiscalPortSource(comPort));
       if (isSaveLog()) deviceSource.setPortSource(new LoggerFiscalPortSource(deviceSource.getPortSource(), System.out));
       device = deviceSource.getFiscalDevice();
       device.open();
@@ -112,7 +113,7 @@ public class FiscalPortCommander implements HasarConstants {
   public void openFiscalDocument(TypeSelectItem documentType) {
     open();
     try {
-      doCommand(CMD_OPEN_FD, documentType);
+      doCommand(CMD_OPEN_FISCAL_RECEIPT, documentType);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Open Fiscal Report command.");
     } finally {
@@ -124,6 +125,7 @@ public class FiscalPortCommander implements HasarConstants {
                                       TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay, TypeSelectItem totalPrice) {
     open();
     try {
+/*
       doCommand(CMD_PRINT_LINE_ITEM,
               itemName != null ? truncate(itemName, 25) : null,
               quantity != null ? quantityFormat.format(quantity) : null,
@@ -135,6 +137,7 @@ public class FiscalPortCommander implements HasarConstants {
               totalPrice);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Line Item command.");
+*/
     } finally {
       close();
     }
@@ -144,6 +147,7 @@ public class FiscalPortCommander implements HasarConstants {
                              Float internalTax, String displayParameters, TypeSelectItem totalPrice, TypeSelectItem discount) {
     open();
     try {
+/*
       doCommand(CMD_RETURN_RECHARGE,
               description != null ? truncate(description, 23) : null,
               amountDiscount != null ? amountFormat.format(amountDiscount) : null,
@@ -155,6 +159,7 @@ public class FiscalPortCommander implements HasarConstants {
               discount);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Return Recharge command.");
+*/
     } finally {
       close();
     }
@@ -163,9 +168,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void printFiscalText(String text) {
     open();
     try {
+/*
       doCommand(CMD_PRINT_FISCAL_TEXT, truncate(text, 30));
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Fiscal Text command.");
+*/
     } finally {
       close();
     }
@@ -174,9 +181,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void closeFiscalDocument() {
     open();
     try {
+/*
       doCommand(CMD_CLOSE_FD, 1);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Close Fiscal Document command.");
+*/
     } finally {
       close();
     }
@@ -185,9 +194,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void cancelDocument() {
     open();
     try {
+/*
       doCommand(CMD_CANCEL_DOCUMENT);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
+*/
     } finally {
       close();
     }
@@ -196,12 +207,14 @@ public class FiscalPortCommander implements HasarConstants {
   public void totalTender(String text, Float amount, TypeSelectItem operation) {
     open();
     try {
+/*
       doCommand(CMD_TOTAL_TENDER,
           truncate(text, 28),
           amount != null ? amountFormat.format(amount) : null,
           operation); //todo lacks two parameters
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Total Tender command.");
+*/
     } finally {
       close();
     }
@@ -210,9 +223,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void subtotalFiscalDocument(TypeSelectItem printingOptions) {
     open();
     try {
+/*
       doCommand(CMD_SUBTOTAL, printingOptions, " ", 0); // 0 it display parameter
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Subtotal Fiscal Document command.");
+*/
     } finally {
       close();
     }
@@ -221,12 +236,14 @@ public class FiscalPortCommander implements HasarConstants {
   public void generalDiscountFiscalDocument(String description, Float amount, TypeSelectItem operationType) {
     open();
     try {
+/*
       doCommand(CMD_GENERAL_DISCOUNT,
           truncate(description, 28),
           amountFormat.format(amount),
           operationType);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
+*/
     } finally {
       close();
     }
@@ -235,9 +252,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void openNfdTicket() {
     open();
     try {
+/*
       doCommand(CMD_OPEN_NFD_TICKET);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Open Non Fiscal Document Ticket command.");
+*/
     } finally {
       close();
     }
@@ -246,9 +265,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void printNonFiscalText(String text) {
     open();
     try {
+/*
       doCommand(CMD_PRINT_NON_FISCAL_TEXT, truncate(text, 80));
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Non Fiscal Text command.");
+*/
     } finally {
       close();
     }
@@ -257,9 +278,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void closeNfd() {
     open();
     try {
+/*
       doCommand(CMD_CLOSE_NFD);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Close Non Fiscal Document command.");
+*/
     } finally {
       close();
     }
@@ -268,9 +291,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void dailyClose(boolean xReport) {
     open();
     try {
+/*
       doCommand(CMD_DAILY_CLOSE, xReport ? "X" : "Z");
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
+*/
     } finally {
       close();
     }
@@ -279,9 +304,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void dailyCloseByNumber(Integer start, Integer end, TypeSelectItem printingOptions) {
     open();
     try {
+/*
       doCommand(CMD_DAILY_CLOSE_BY_NUMBER, start, end, printingOptions);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
+*/
     } finally {
       close();
     }
@@ -290,9 +317,11 @@ public class FiscalPortCommander implements HasarConstants {
   public void dailyCloseByDate(Date start, Date end, TypeSelectItem printingOptions) {
     open();
     try {
+/*
       doCommand(CMD_DAILY_CLOSE_BY_DATE, start, end, printingOptions);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Daily Close command.");
+*/
     } finally {
       close();
     }
@@ -301,11 +330,13 @@ public class FiscalPortCommander implements HasarConstants {
   public void setCustomerData(@NotNull DocumentOptions documentOptions) {
     open();
     try {
+/*
       doCommand(CMD_SET_CUSTOMER_DATA, truncate(documentOptions.getName(), 45), truncate(documentOptions.getNumber(), 11),
               documentOptions.getConditionTax(), documentOptions.getDocument() != null ? documentOptions.getDocument() : null,
               documentOptions.getAddress());
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Set Customer Data command.");
+*/
     } finally {
       close();
     }
