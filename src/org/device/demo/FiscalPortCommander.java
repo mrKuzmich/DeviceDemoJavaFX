@@ -101,8 +101,8 @@ public class FiscalPortCommander implements EpsonConstants {
   public void statusRequest() {
     open();
     try {
-      doCommand(CMD_STATUS_REQUEST);
-//      doCommand(CMD_GET_INIT_DATA);
+      doCommand(CMD_STATUS_REQUEST, new byte[]{0,0});
+      doCommand(CMD_GET_INFORMATION, new byte[]{0,0});
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Status Request command.");
     } finally {
