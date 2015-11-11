@@ -113,7 +113,7 @@ public class FiscalPortCommander implements EpsonConstants {
   public void openFiscalDocument(TypeSelectItem documentType) {
     open();
     try {
-      doCommand(CMD_OPEN_FISCAL_RECEIPT, documentType);
+      doCommand(CMD_GET_INFORMATION, new byte[]{0,0});
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Open Fiscal Report command.");
     } finally {
@@ -364,6 +364,8 @@ public class FiscalPortCommander implements EpsonConstants {
           packet.setDate(paramsIndex, (Date) parameter);
         else if (parameter instanceof TypeSelectItem)
           packet.setString(paramsIndex, ((TypeSelectItem) parameter).getType());
+        else if (parameter instanceof byte[])
+          packet.set(paramsIndex, (byte[])parameter);
         else throw new FiscalPortCommandException("Parametr of %s type is not supported.",
                   parameter != null ? parameter.getClass().getName() : "null");
       }
