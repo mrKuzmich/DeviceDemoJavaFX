@@ -101,8 +101,8 @@ public class FiscalPortCommander implements EpsonConstants {
   public void statusRequest() {
     open();
     try {
-      doCommand(CMD_STATUS_REQUEST, new byte[]{0,0});
-      doCommand(CMD_GET_INFORMATION, new byte[]{0,0});
+      doCommand(CMD_STATUS_REQUEST_EXT, new byte[]{0,0});
+      doCommand(CMD_GET_INFORMATION_EXT, new byte[]{0,0});
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Status Request command.");
     } finally {
@@ -113,7 +113,7 @@ public class FiscalPortCommander implements EpsonConstants {
   public void openFiscalDocument(TypeSelectItem documentType) {
     open();
     try {
-      doCommand(CMD_GET_INFORMATION, new byte[]{0,0});
+      doCommand(CMD_OPEN_FD_EXT, new byte[]{0,0});
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Open Fiscal Report command.");
     } finally {
