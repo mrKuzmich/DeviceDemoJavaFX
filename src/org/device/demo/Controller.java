@@ -172,6 +172,7 @@ public class Controller {
     initFiscalPort();
     if (IT_SALE.equals(cbFTestQualifierOperation.getValue()))
       fiscalPort.printLineFiscalDocument(tfFTestItemName.getText(),
+              tfFTestExtraText.getText(),
               getFieldAsFloat(tfFTestQuantity.getText(), "Quantity"),
               getFieldAsFloat(tfFTestPriceAmount.getText(), "Price/Amount"),
               getFieldAsFloat(tfFTestTax.getText(), "Tax %"),

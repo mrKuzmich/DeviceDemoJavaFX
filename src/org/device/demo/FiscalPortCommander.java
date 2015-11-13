@@ -20,8 +20,8 @@ import java.util.Date;
 public class FiscalPortCommander implements EpsonConstants {
 
   private static final DecimalFormatSymbols defaultDecimalFormatSymbols = new DecimalFormatSymbols() {{setDecimalSeparator('.');}};
-  private static final NumberFormat quantityFormat = new DecimalFormat("###############0.000", defaultDecimalFormatSymbols);
-  private static final NumberFormat amountFormat = new DecimalFormat("######0.00", defaultDecimalFormatSymbols);
+  private static final NumberFormat quantityFormat = new DecimalFormat("###############0", defaultDecimalFormatSymbols);
+  private static final NumberFormat amountFormat = new DecimalFormat("######0", defaultDecimalFormatSymbols);
   private static final NumberFormat taxFormat = new DecimalFormat("0000", defaultDecimalFormatSymbols);
 
   private String comPort;
@@ -121,23 +121,19 @@ public class FiscalPortCommander implements EpsonConstants {
     }
   }
 
-  public void printLineFiscalDocument(String itemName, Float quantity, Float amount, Float tax,
+  public void printLineFiscalDocument(String itemName, String extraDescription, Float quantity, Float amount, Float tax,
                                       TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay, TypeSelectItem totalPrice) {
     open();
     try {
-/*
-      doCommand(CMD_PRINT_LINE_ITEM,
-              itemName != null ? truncate(itemName, 25) : null,
+      doCommand(CMD_PRINT_LINE_ITEM_EXT, new byte[2], extraDescription, "", "", "",
+              itemName != null ? truncate(itemName, 25) : "",
               quantity != null ? quantityFormat.format(quantity) : null,
               amount != null ? amountFormat.format(amount) : null,
-              tax != null ? taxFormat.format(tax*100) : null,
-              operationType,
-              internalTax != null ? taxFormat.format(internalTax) : null,
-              parameterDisplay,
-              totalPrice);
+              tax != null ? taxFormat.format(tax*100) : 0,
+              internalTax != null ? taxFormat.format(internalTax) : 0,
+              0);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Line Item command.");
-*/
     } finally {
       close();
     }
@@ -181,11 +177,9 @@ public class FiscalPortCommander implements EpsonConstants {
   public void closeFiscalDocument() {
     open();
     try {
-/*
-      doCommand(CMD_CLOSE_FD, 1);
+      doCommand(CMD_CLOSE_FD_EXT, new byte[]{0x00, 0x03}, 0, "", 0, "", 0, "");
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Close Fiscal Document command.");
-*/
     } finally {
       close();
     }
@@ -194,11 +188,9 @@ public class FiscalPortCommander implements EpsonConstants {
   public void cancelDocument() {
     open();
     try {
-/*
-      doCommand(CMD_CANCEL_DOCUMENT);
+      doCommand(CMD_CANCEL_DOCUMENT_EXT, new byte[2]);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
-*/
     } finally {
       close();
     }
