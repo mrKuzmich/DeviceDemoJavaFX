@@ -8,20 +8,26 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class Main extends Application {
   private Stage primaryStage;
+  private PortCommander portCommander = null;
+
+  public PortCommander getPortCommander(Class<PortCommander> portCommanderClass) throws Exception {
+    if (portCommander == null || !portCommander.getClass().equals(portCommanderClass)) {
+      portCommander = portCommanderClass.newInstance();
+    }
+    return portCommander;
+  }
 
   @Override
   public void start(Stage primaryStage) throws Exception {
@@ -37,8 +43,7 @@ public class Main extends Application {
     primaryStage.setScene(new Scene(root, 674, 648));
     primaryStage.show();
     Controller controller = loader.getController();
-    controller.setFiscalPort(new FiscalPortCommander());
-    controller.setMainApplication(this);
+    controller.init(this);
   }
 
   public DocumentOptions showDocOptionsDialog(DocumentOptions documentOptions) throws IOException {

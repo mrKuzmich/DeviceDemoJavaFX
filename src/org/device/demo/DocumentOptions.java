@@ -1,7 +1,5 @@
 package org.device.demo;
 
-import javafx.beans.property.*;
-
 /**
  * Created by Dmitry on 16.10.2015.
  */
@@ -11,9 +9,9 @@ public class DocumentOptions {
   private Boolean debitNote = false;
   private Boolean creditNote = false;
 
-  private FiscalPortCommander.TypeSelectItem type;
-  private FiscalPortCommander.TypeSelectItem conditionTax;
-  private FiscalPortCommander.TypeSelectItem document;
+  private TypeSelectItem type;
+  private TypeSelectItem conditionTax;
+  private TypeSelectItem document;
 
   private String number;
   private String name;
@@ -54,27 +52,27 @@ public class DocumentOptions {
     this.creditNote = creditNote;
   }
 
-  public FiscalPortCommander.TypeSelectItem getType() {
+  public TypeSelectItem getType() {
     return type;
   }
 
-  public void setType(FiscalPortCommander.TypeSelectItem type) {
+  public void setType(TypeSelectItem type) {
     this.type = type;
   }
 
-  public FiscalPortCommander.TypeSelectItem getConditionTax() {
+  public TypeSelectItem getConditionTax() {
     return conditionTax;
   }
 
-  public void setConditionTax(FiscalPortCommander.TypeSelectItem conditionTax) {
+  public void setConditionTax(TypeSelectItem conditionTax) {
     this.conditionTax = conditionTax;
   }
 
-  public FiscalPortCommander.TypeSelectItem getDocument() {
+  public TypeSelectItem getDocument() {
     return document;
   }
 
-  public void setDocument(FiscalPortCommander.TypeSelectItem document) {
+  public void setDocument(TypeSelectItem document) {
     this.document = document;
   }
 

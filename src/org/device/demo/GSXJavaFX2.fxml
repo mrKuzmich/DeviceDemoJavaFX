@@ -28,6 +28,8 @@
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font></Button>
+                              <Label layoutX="14.0" layoutY="77.0" text="Label" />
+                              <ChoiceBox fx:id="cbModels" layoutX="48.0" layoutY="73.0" prefWidth="150.0" />
                            </children></AnchorPane>
                     </content>
                   </Tab>

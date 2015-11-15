@@ -12,28 +12,28 @@ import javafx.stage.Stage;
  * Created by Dmitry on 16.10.2015.
  */
 public class DocOptionsController {
-  final static ObservableList<FiscalPortCommander.TypeSelectItem> TYPES = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("A", "A"),
-          new FiscalPortCommander.TypeSelectItem("B", "B/C"));
+  final static ObservableList<TypeSelectItem> TYPES = FXCollections.observableArrayList(
+          new TypeSelectItem("A", "A"),
+          new TypeSelectItem("B", "B/C"));
 
-  final static ObservableList<FiscalPortCommander.TypeSelectItem> CONDITION_TAXES = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("I", "Enrolled Responsible"),
-          new FiscalPortCommander.TypeSelectItem("N", "Responsible not registered"),
-          new FiscalPortCommander.TypeSelectItem("E", "Exempt"),
-          new FiscalPortCommander.TypeSelectItem("A", "Not Responsible"),
-          new FiscalPortCommander.TypeSelectItem("B", "Head not registered"),
-          new FiscalPortCommander.TypeSelectItem("M", "Responsible monotributo"),
-          new FiscalPortCommander.TypeSelectItem("S", "Social Monotribustista"),
-          new FiscalPortCommander.TypeSelectItem("T", "Not categorized"));
+  final static ObservableList<TypeSelectItem> CONDITION_TAXES = FXCollections.observableArrayList(
+          new TypeSelectItem("I", "Enrolled Responsible"),
+          new TypeSelectItem("N", "Responsible not registered"),
+          new TypeSelectItem("E", "Exempt"),
+          new TypeSelectItem("A", "Not Responsible"),
+          new TypeSelectItem("B", "Head not registered"),
+          new TypeSelectItem("M", "Responsible monotributo"),
+          new TypeSelectItem("S", "Social Monotribustista"),
+          new TypeSelectItem("T", "Not categorized"));
 
-  final static ObservableList<FiscalPortCommander.TypeSelectItem> DOCUMENTS = FXCollections.observableArrayList(
-          new FiscalPortCommander.TypeSelectItem("C", "CUIT"),
-          new FiscalPortCommander.TypeSelectItem("L", "CUIL"),
-          new FiscalPortCommander.TypeSelectItem("0", "Enrollment"),
-          new FiscalPortCommander.TypeSelectItem("1", "Civic"),
-          new FiscalPortCommander.TypeSelectItem("2", "National identity"),
-          new FiscalPortCommander.TypeSelectItem("3", "Passport"),
-          new FiscalPortCommander.TypeSelectItem("4", "Identity card"));
+  final static ObservableList<TypeSelectItem> DOCUMENTS = FXCollections.observableArrayList(
+          new TypeSelectItem("C", "CUIT"),
+          new TypeSelectItem("L", "CUIL"),
+          new TypeSelectItem("0", "Enrollment"),
+          new TypeSelectItem("1", "Civic"),
+          new TypeSelectItem("2", "National identity"),
+          new TypeSelectItem("3", "Passport"),
+          new TypeSelectItem("4", "Identity card"));
 
 
   @FXML
@@ -45,11 +45,11 @@ public class DocOptionsController {
   @FXML
   private CheckBox cbCreditNote;
   @FXML
-  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbType;
+  private ChoiceBox<TypeSelectItem> cbType;
   @FXML
-  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbConditionTax;
+  private ChoiceBox<TypeSelectItem> cbConditionTax;
   @FXML
-  private ChoiceBox<FiscalPortCommander.TypeSelectItem> cbDocument;
+  private ChoiceBox<TypeSelectItem> cbDocument;
   @FXML
   private TextField tfNumber;
   @FXML
