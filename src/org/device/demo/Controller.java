@@ -305,7 +305,7 @@ public class Controller {
 
     cbComPort.setItems(getComPorts());
     cbBaudRates.setItems(baudRates);
-    cbBaudRates.setValue(baudRates.get(0));
+    cbBaudRates.setValue(baudRates.get(4));
     cbModels.setItems(MODELS);
     cbModels.setValue(MODELS.get(0));
     cbFTestDocumentType.setItems(DOCUMENT_TYPES);
