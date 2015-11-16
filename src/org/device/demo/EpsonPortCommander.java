@@ -12,6 +12,8 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Dmitry on 07.10.2015.
@@ -23,6 +25,16 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   private static final NumberFormat amountFormat = new DecimalFormat("######0", defaultDecimalFormatSymbols);
   private static final NumberFormat taxFormat = new DecimalFormat("0000", defaultDecimalFormatSymbols);
   private static final SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+
+  private static final Map<String, String> documentTypeMapping = new HashMap<String, String>() {{
+    put("C", "T"); put("L", "L"); put("0", "E"); put("1", "V"); put("2", "D"); put("3", "P"); put("4", "C");
+  }};
+
+  private static final Map<String, String> responsibilityMapping = new HashMap<String, String>() {{
+    put("T", "U"); put("N", "P"); put("E", "E"); put("A", "N"); put("B", "I"); put("M", "M"); put("S", "T"); put("I", "F");
+  }};
+
+  private DocumentOptions documentOptions = null;
 
   public EpsonPortCommander() {
     super();
@@ -50,7 +62,16 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void openFiscalDocument(org.device.demo.TypeSelectItem documentType) {
     open();
     try {
-      doCommand(CMD_OPEN_FD_EXT, new byte[]{0,0});
+      if (isTfCommand()) {
+        // Command, Extend command, Name of the buyer Line 1, Name of the buyer line 2,
+        // Address of buyer Line 1, Address of buyer Line 2, Address of buyer Line 3
+        // Buyer type of document, Number of documents, Responsibility to VAT of the buyer,
+        // Lines associated remitos #1, Lines associated remitos #2, Line refund check, for tourist
+        doCommand(CMD_OPEN_TF, new byte[2], documentOptions.getName(), "", documentOptions.getAddress(), "", "",
+            documentTypeMapping.get(documentOptions.getDocument().getType()), documentOptions.getNumber(),
+            responsibilityMapping.get(documentOptions.getConditionTax().getType()), "", "", "");
+      } else
+        doCommand(CMD_OPEN_FD_EXT, new byte[]{0, 0});
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Open Fiscal Report command.");
     } finally {
@@ -70,13 +91,14 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
 
     open();
     try {
-      doCommand(CMD_PRINT_LINE_ITEM_EXT, new byte[]{0x00, extCommand}, extraDescription, "", "", "",
-              itemName != null ? truncate(itemName, 25) : "",
-              quantity != null ? quantityFormat.format(quantity) : null,
-              amount != null ? amountFormat.format(amount) : null,
-              tax != null ? taxFormat.format(tax*100) : 0,
-              internalTax != null ? taxFormat.format(internalTax) : 0,
-              0);
+      doCommand(isTfCommand() ? CMD_PRINT_LINE_ITEM_TF : CMD_PRINT_LINE_ITEM_EXT,
+          new byte[]{0x00, extCommand}, extraDescription, "", "", "",
+          itemName != null ? truncate(itemName, 25) : "",
+          quantity != null ? quantityFormat.format(quantity) : null,
+          amount != null ? amountFormat.format(amount) : null,
+          tax != null ? taxFormat.format(tax * 100) : 0,
+          internalTax != null ? taxFormat.format(internalTax) : 0,
+          0);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Line Item command.");
     } finally {
@@ -101,7 +123,8 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void closeFiscalDocument() {
     open();
     try {
-      doCommand(CMD_CLOSE_FD_EXT, new byte[]{0x00, 0x03}, 0, "", 0, "", 0, "");
+      doCommand(isTfCommand() ? CMD_CLOSE_TF : CMD_CLOSE_FD_EXT,
+          new byte[]{0x00, 0x03}, 0, "", 0, "", 0, "");
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Close Fiscal Document command.");
     } finally {
@@ -112,7 +135,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void cancelDocument() {
     open();
     try {
-      doCommand(CMD_CANCEL_DOCUMENT_EXT, new byte[2]);
+      doCommand(isTfCommand() ? CMD_CANCEL_DOCUMENT_TF : CMD_CANCEL_DOCUMENT_EXT, new byte[2]);
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
     } finally {
@@ -123,7 +146,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void totalTender(String text, Float amount, TypeSelectItem operation) {
     open();
     try {
-      doCommand(CMD_TOTAL_TENDER_EXT,
+      doCommand(isTfCommand() ? CMD_TOTAL_TENDER_TF : CMD_TOTAL_TENDER_EXT,
           new byte[]{0x00, 0x00},
           null,
           truncate(text, 28),
@@ -138,7 +161,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void subtotalFiscalDocument(org.device.demo.TypeSelectItem printingOptions) {
     open();
     try {
-      doCommand(CMD_SUBTOTAL_EXT,
+      doCommand(isTfCommand() ? CMD_SUBTOTAL_TF : CMD_SUBTOTAL_EXT,
           new byte[]{0x00, (byte) (Controller.AUDIT_PRINTING_OPTIONS.get(0).equals(printingOptions) ? 0x00 : 0x01)});
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Subtotal Fiscal Document command.");
@@ -150,7 +173,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void generalDiscountFiscalDocument(String description, Float amount, org.device.demo.TypeSelectItem operationType) {
     open();
     try {
-      doCommand(CMD_GENERAL_DISCOUNT_EXT,
+      doCommand(isTfCommand() ? CMD_GENERAL_DISCOUNT_TF : CMD_GENERAL_DISCOUNT_EXT,
           new byte[]{0x00, (byte) (Controller.OPERATION_TYPES.get(0).equals(operationType) ? 0x00 : 0x01)},
           truncate(description, 28) ,
           amountFormat.format(amount));
@@ -232,17 +255,10 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   }
 
   public void setCustomerData(@NotNull DocumentOptions documentOptions) {
-    open();
-    try {
-/*
-      doCommand(CMD_SET_CUSTOMER_DATA, truncate(documentOptions.getName(), 45), truncate(documentOptions.getNumber(), 11),
-              documentOptions.getConditionTax(), documentOptions.getDocument() != null ? documentOptions.getDocument() : null,
-              documentOptions.getAddress());
-    } catch (Exception e) {
-      throw new FiscalPortCommandException(e, "Error executing of Set Customer Data command.");
-*/
-    } finally {
-      close();
-    }
+    this.documentOptions = documentOptions;
+  }
+
+  public boolean isTfCommand() {
+    return documentOptions != null;
   }
 }
