@@ -21,9 +21,9 @@ import java.util.Map;
 public class EpsonPortCommander extends PortCommanderImpl implements EpsonConstants {
 
   private static final DecimalFormatSymbols defaultDecimalFormatSymbols = new DecimalFormatSymbols() {{setDecimalSeparator('.');}};
-  private static final NumberFormat quantityFormat = new DecimalFormat("###############0", defaultDecimalFormatSymbols);
-  private static final NumberFormat amountFormat = new DecimalFormat("######0", defaultDecimalFormatSymbols);
-  private static final NumberFormat taxFormat = new DecimalFormat("0000", defaultDecimalFormatSymbols);
+  private static final NumberFormat quantityFormat = new DecimalFormat("#############0.0", defaultDecimalFormatSymbols);
+  private static final NumberFormat amountFormat = new DecimalFormat("#####0.00", defaultDecimalFormatSymbols);
+  private static final NumberFormat taxFormat = new DecimalFormat("#0.00", defaultDecimalFormatSymbols);
   private static final SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
   private static final Map<String, String> documentTypeMapping = new HashMap<String, String>() {{
@@ -83,7 +83,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void printLineFiscalDocument(String itemName, String extraDescription, Float quantity, Float amount, Float tax,
                                       TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay,
                                       TypeSelectItem totalPrice, TypeSelectItem qualifierOperation) {
-    byte extCommand = 0x00;
+    byte extCommand = 0x10;
     // Add Amount - 0; Void Amount - 1;
     if (Controller.OPERATION_TYPES.get(1).equals(operationType)) extCommand = (byte) (extCommand | 0x01);
     if (Controller.QUALIFIER_OPERATION.get(1).equals(qualifierOperation)) extCommand = (byte) (extCommand | 0x06);
@@ -91,14 +91,22 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
 
     open();
     try {
-      doCommand(isTfCommand() ? CMD_PRINT_LINE_ITEM_TF : CMD_PRINT_LINE_ITEM_EXT,
-          new byte[]{0x00, extCommand}, extraDescription, "", "", "",
-          itemName != null ? truncate(itemName, 25) : "",
-          quantity != null ? quantityFormat.format(quantity) : null,
-          amount != null ? amountFormat.format(amount) : null,
-          tax != null ? taxFormat.format(tax * 100) : 0,
-          internalTax != null ? taxFormat.format(internalTax) : 0,
-          0);
+      doCommand(isTfCommand() ? CMD_PRINT_LINE_ITEM_TF : CMD_PRINT_LINE_ITEM_EXT, // Command (0A 02 )
+          new byte[]{0x00, extCommand}, // Extended Command
+          extraDescription, // Extra Description #1
+          "", "", "", // Extra Description #2, 3, 4
+          itemName != null ? truncate(itemName, 25) : "", // Item description
+          quantity != null ? quantityFormat.format(quantity) : null, // Quantity
+          amount != null ? amountFormat.format(amount) : null, // unit Price
+          tax != null ? taxFormat.format(tax) : 0, // TAX
+          internalTax != null ? taxFormat.format(internalTax) : null, // fixed internal tax
+          null, // Excise percentage coefficient
+          "", // MTX reference unit
+          "", // Item Code MTX (EAN)
+          "", // Internal Code
+          7, // Code measurement unit
+          7// condition code against VAT
+          );
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Print Line Item command.");
     } finally {
