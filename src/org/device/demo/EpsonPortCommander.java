@@ -21,7 +21,7 @@ import java.util.Map;
 public class EpsonPortCommander extends PortCommanderImpl implements EpsonConstants {
 
   private static final DecimalFormatSymbols defaultDecimalFormatSymbols = new DecimalFormatSymbols() {{setDecimalSeparator('.');}};
-  private static final NumberFormat quantityFormat = new DecimalFormat("#############0.0", defaultDecimalFormatSymbols);
+  private static final NumberFormat quantityFormat = new DecimalFormat("#############0.000", defaultDecimalFormatSymbols);
   private static final NumberFormat amountFormat = new DecimalFormat("#####0.00", defaultDecimalFormatSymbols);
   private static final NumberFormat taxFormat = new DecimalFormat("#0.00", defaultDecimalFormatSymbols);
   private static final SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
@@ -80,7 +80,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   }
 
   @Override
-  public void printLineFiscalDocument(String itemName, String extraDescription, Float quantity, Float amount, Float tax,
+  public void printLineFiscalDocument(String itemName, String itemCode, String extraDescription, Float quantity, Float amount, Float tax,
                                       TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay,
                                       TypeSelectItem totalPrice, TypeSelectItem qualifierOperation) {
     byte extCommand = 0x10;
@@ -102,7 +102,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
           internalTax != null ? taxFormat.format(internalTax) : null, // fixed internal tax
           null, // Excise percentage coefficient
           "", // MTX reference unit
-          "", // Item Code MTX (EAN)
+          itemCode, // Item Code MTX (EAN)
           "", // Internal Code
           7, // Code measurement unit
           7// condition code against VAT
@@ -155,10 +155,15 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
     open();
     try {
       doCommand(isTfCommand() ? CMD_TOTAL_TENDER_TF : CMD_TOTAL_TENDER_EXT,
-          new byte[]{0x00, 0x00},
-          null,
-          truncate(text, 28),
-          amount != null ? amountFormat.format(amount) : null);
+          new byte[]{0x00, 0x00}, // Extended Command
+          null, // Extra description of payment #1
+          truncate(text, 28), // Extra Description of payment #2
+          null, // number of installments
+          null, // Detail other payment methods
+          null, // Detail coupons
+          0, // Payment code
+          amount != null ? amountFormat.format(amount) : null// Amount (nnnnnnnn.nn)
+          );
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Total Tender command.");
     } finally {
@@ -184,7 +189,11 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
       doCommand(isTfCommand() ? CMD_GENERAL_DISCOUNT_TF : CMD_GENERAL_DISCOUNT_EXT,
           new byte[]{0x00, (byte) (Controller.OPERATION_TYPES.get(0).equals(operationType) ? 0x00 : 0x01)},
           truncate(description, 28) ,
-          amountFormat.format(amount));
+          amountFormat.format(amount), // Amount discount or recharge
+          "", // tax
+          "",// INTERNAL CODE
+          ""// CONDITION TAX CODE
+          );
     } catch (Exception e) {
       throw new FiscalPortCommandException(e, "Error executing of Cancel Fiscal Document command.");
     } finally {

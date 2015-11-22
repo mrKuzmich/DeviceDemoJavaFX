@@ -58,7 +58,7 @@ public class HasarPortCommander extends PortCommanderImpl implements HasarConsta
   }
 
   @Override
-  public void printLineFiscalDocument(String itemName, String extraDescription, Float quantity, Float amount, Float tax,
+  public void printLineFiscalDocument(String itemName, String itemCode, String extraDescription, Float quantity, Float amount, Float tax,
                                       TypeSelectItem operationType, Float internalTax, TypeSelectItem parameterDisplay,
                                       TypeSelectItem totalPrice, TypeSelectItem qualifierOperation) {
     if (Controller.IT_SALE.equals(qualifierOperation)) {

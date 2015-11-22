@@ -76,6 +76,8 @@ public class Controller {
   @FXML
   private TextField tfFTestItemName;
   @FXML
+  private TextField tfFTestItemCode;
+  @FXML
   private TextField tfFTestQuantity;
   @FXML
   private TextField tfFTestPriceAmount;
@@ -164,6 +166,7 @@ public class Controller {
   @FXML
   private void actionFiscalDocumentSendItem() {
     getPortCommander().printLineFiscalDocument(tfFTestItemName.getText(),
+        tfFTestItemCode.getText(),
         tfFTestExtraText.getText(),
         getFieldAsFloat(tfFTestQuantity.getText(), "Quantity"),
         getFieldAsFloat(tfFTestPriceAmount.getText(), "Price/Amount"),

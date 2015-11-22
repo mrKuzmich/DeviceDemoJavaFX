@@ -37,87 +37,89 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
+							  
+                              <Label layoutX="13.0" layoutY="12.0" text="Document type" />
+                              <ChoiceBox fx:id="cbFTestDocumentType" layoutX="102.0" layoutY="8.0" prefWidth="150.0" />
+                              <Button layoutX="260.0" layoutY="8.0" mnemonicParsing="false" onAction="#actionSetCustomerData" prefHeight="46.0" prefWidth="106.0" text="Set Customer Data" textFill="#002202" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
                               <Button layoutX="574.0" layoutY="8.0" mnemonicParsing="false" onAction="#actionFiscalDocumentOpen" prefHeight="50.0" prefWidth="80.0" text="Open" textFill="#3016c6">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Button>
-                              <Separator layoutX="-2.0" layoutY="170.0" prefHeight="4.0" prefWidth="691.0" />
+                              <Separator layoutY="64.0" prefHeight="3.0" prefWidth="685.0" />
                               <Label layoutX="13.0" layoutY="71.0" prefHeight="15.0" prefWidth="73.0" text="Item Name" />
-                              <TextField fx:id="tfFTestItemName" layoutX="13.0" layoutY="87.0" prefHeight="25.0" prefWidth="236.0" />
-                              <TextField fx:id="tfFTestQuantity" layoutX="276.0" layoutY="88.0" prefHeight="25.0" prefWidth="80.0" />
-                              <TextField fx:id="tfFTestPriceAmount" layoutX="377.0" layoutY="87.0" prefHeight="25.0" prefWidth="94.0" />
-                              <Label layoutX="274.0" layoutY="71.0" text="Quantity" />
-                              <Label layoutX="377.0" layoutY="66.0" prefHeight="25.0" prefWidth="94.0" text="Price / Amount" wrapText="true" />
-                              <Label layoutX="491.0" layoutY="70.0" prefHeight="15.0" prefWidth="45.0" text="Tax %" />
-                              <TextField fx:id="tfFTestTax" layoutX="491.0" layoutY="88.0" prefHeight="25.0" prefWidth="61.0" />
-                              <Label layoutX="274.0" layoutY="177.0" text="Extra Description " />
-                              <TextField fx:id="tfFTestExtraText" layoutX="275.0" layoutY="202.0" prefHeight="25.0" prefWidth="268.0" />
+                              <TextField fx:id="tfFTestItemName" layoutX="13.0" layoutY="87.0" prefHeight="25.0" prefWidth="198.0" />
+                              <Label layoutX="219.0" layoutY="71.0" text="Item Code MTX" />
+                              <TextField fx:id="tfFTestItemCode" layoutX="219.0" layoutY="87.0" prefHeight="25.0" prefWidth="117.0" />
+                              <Label layoutX="343.0" layoutY="70.0" text="Quantity" />
+                              <TextField fx:id="tfFTestQuantity" layoutX="342.0" layoutY="87.0" prefHeight="25.0" prefWidth="67.0" />
+                              <Label layoutX="413.0" layoutY="67.0" prefHeight="25.0" prefWidth="94.0" text="Price / Amount" wrapText="true" />
+                              <TextField fx:id="tfFTestPriceAmount" layoutX="417.0" layoutY="87.0" prefHeight="25.0" prefWidth="87.0" />
+                              <Label layoutX="508.0" layoutY="70.0" prefHeight="15.0" prefWidth="45.0" text="Tax %" />
+                              <TextField fx:id="tfFTestTax" layoutX="509.0" layoutY="88.0" prefHeight="25.0" prefWidth="43.0" />
+                              <Label layoutX="14.0" layoutY="118.0" prefHeight="17.0" prefWidth="117.0" text="Internal Tax amount" />
+                              <TextField fx:id="tfFTestInternalAmount" layoutX="14.0" layoutY="137.0" prefHeight="25.0" prefWidth="108.0" />
+                              <Label layoutX="131.0" layoutY="118.0" text="OperationType" />
+                              <ChoiceBox fx:id="cbFTestOperationType" layoutX="131.0" layoutY="137.0" prefHeight="25.0" prefWidth="141.0" />
+                              <Label layoutX="279.0" layoutY="118.0" text="Qualifier Price Type" />
+                              <ChoiceBox fx:id="cbFTestQualifierPriceOperation" layoutX="281.0" layoutY="137.0" prefHeight="25.0" prefWidth="128.0" />
+                              <Label layoutX="419.0" layoutY="118.0" text="Qualifier Operation" />
+                              <ChoiceBox fx:id="cbFTestQualifierOperation" layoutX="419.0" layoutY="137.0" prefHeight="25.0" prefWidth="133.0" />
                               <Button layoutX="574.0" layoutY="76.0" mnemonicParsing="false" onAction="#actionFiscalDocumentSendItem" prefHeight="50.0" prefWidth="80.0" text="Send Item" textFill="#3016c6" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Button>
-                              <Button layoutX="574.0" layoutY="407.0" mnemonicParsing="false" onAction="#actionFiscalDocumentCancel" prefHeight="25.0" prefWidth="80.0" text="Cancel" textFill="#e80000">
-								<font>
-                                    <Font name="System Bold" size="13.0" />
-                                </font></Button>
-                              <Button layoutX="576.0" layoutY="310.0" mnemonicParsing="false" onAction="#actionFiscalDocumentTender" prefHeight="38.0" prefWidth="79.0" text="TENDER" textFill="#3016c6">
-								<font>
-				                    <Font name="System Bold" size="12.0" />
-                                </font>
-                              </Button>
-                              <Label layoutX="14.0" layoutY="300.0" text="Payment Name" />
-                              <TextField fx:id="tfFTestPaymentName" layoutX="13.0" layoutY="317.0" prefHeight="25.0" prefWidth="269.0" />
-                              <TextField fx:id="tfFTestPaymentAmount" layoutX="297.0" layoutY="317.0" prefHeight="25.0" prefWidth="85.0" />
-                              <Button layoutX="575.0" layoutY="453.0" mnemonicParsing="false" onAction="#actionFiscalDocumentClose" prefHeight="50.0" prefWidth="81.0" text="FINALIZE" textFill="#3016c6">
-								<font>
-                                    <Font name="System Bold" size="13.0" />
-                                </font></Button>
-                              <TextField fx:id="tfFTestInternalAmount" layoutX="14.0" layoutY="137.0" prefHeight="25.0" prefWidth="108.0" />
-							  
-                              <Label layoutX="13.0" layoutY="12.0" text="Document type" />
-                              <Label layoutX="14.0" layoutY="118.0" prefHeight="17.0" prefWidth="117.0" text="Internal Tax amount" />
+                              <Separator layoutX="-2.0" layoutY="170.0" prefHeight="4.0" prefWidth="691.0" />
+                              <Label layoutX="274.0" layoutY="177.0" text="Extra Description " />
+                              <TextField fx:id="tfFTestExtraText" layoutX="275.0" layoutY="202.0" prefHeight="25.0" prefWidth="268.0" />
                               <Button layoutX="574.0" layoutY="177.0" mnemonicParsing="false" onAction="#actionFiscalDocumentSendText" prefHeight="50.0" prefWidth="80.0" text="Send Text" textFill="#3016c6" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Button>
                               <Separator layoutY="236.0" prefHeight="3.0" prefWidth="685.0" />
-                              <Separator layoutY="290.0" prefHeight="1.0" prefWidth="683.0" />
-                              <Label layoutX="295.0" layoutY="300.0" prefHeight="17.0" prefWidth="101.0" text="Payment Amount" />
-                              <Button layoutX="260.0" layoutY="8.0" mnemonicParsing="false" onAction="#actionSetCustomerData" prefHeight="46.0" prefWidth="106.0" text="Set Customer Data" textFill="#002202" wrapText="true">
+                              <Label layoutX="14.0" layoutY="239.0" text="General Discount/Recharge Name" />
+                              <TextField fx:id="tfFTestRechargeDiscountName" layoutX="14.0" layoutY="259.0" prefHeight="25.0" prefWidth="269.0" />
+                              <Label layoutX="295.0" layoutY="239.0" prefHeight="17.0" prefWidth="101.0" text="Amount" />
+                              <TextField fx:id="tfFTestRechargeDiscountAmount" layoutX="294.0" layoutY="259.0" prefHeight="25.0" prefWidth="88.0" />
+                              <Label layoutX="395.0" layoutY="239.0" text="Recharge Operation" />
+                              <ChoiceBox fx:id="cbFTestGeneralAddOperation" layoutX="396.0" layoutY="259.0" prefHeight="25.0" prefWidth="157.0" />
+                              <Button layoutX="573.0" layoutY="240.0" mnemonicParsing="false" onAction="#actionFiscalDocumentGeneralDiscountRecharge" prefHeight="46.0" prefWidth="79.0" text="General Discount Recharge" textFill="#3016c6" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Separator layoutY="64.0" prefHeight="3.0" prefWidth="685.0" />
+                              <Separator layoutY="290.0" prefHeight="1.0" prefWidth="683.0" />
+                              <Label layoutX="14.0" layoutY="300.0" text="Payment Name" />
+                              <TextField fx:id="tfFTestPaymentName" layoutX="13.0" layoutY="317.0" prefHeight="25.0" prefWidth="269.0" />
+                              <Label layoutX="295.0" layoutY="300.0" prefHeight="17.0" prefWidth="101.0" text="Payment Amount" />
+                              <TextField fx:id="tfFTestPaymentAmount" layoutX="297.0" layoutY="317.0" prefHeight="25.0" prefWidth="85.0" />
+                              <Label layoutX="395.0" layoutY="300.0" text="Tender Operation" />
+                              <ChoiceBox fx:id="cbFTestTenderOperation" layoutX="395.0" layoutY="317.0" prefHeight="25.0" prefWidth="159.0" />
+                              <Button layoutX="576.0" layoutY="310.0" mnemonicParsing="false" onAction="#actionFiscalDocumentTender" prefHeight="38.0" prefWidth="79.0" text="TENDER" textFill="#3016c6">
+								<font>
+				                    <Font name="System Bold" size="12.0" />
+                                </font>
+                              </Button>
+                              <Label layoutX="396.0" layoutY="352.0" text="Printing options" />
+                              <ChoiceBox fx:id="cbFTestSubtotalOption" layoutX="396.0" layoutY="367.0" prefHeight="25.0" prefWidth="160.0" />
                               <Button layoutX="575.0" layoutY="360.0" mnemonicParsing="false" onAction="#actionFiscalDocumentSubtotal" prefHeight="38.0" prefWidth="80.0" text="SUBTOTAL" textFill="#3016c6">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
                               <Separator layoutX="-1.0" layoutY="400.0" prefHeight="3.0" prefWidth="685.0" />
-                              <Label layoutX="295.0" layoutY="239.0" prefHeight="17.0" prefWidth="101.0" text="Amount" />
-                              <TextField fx:id="tfFTestRechargeDiscountAmount" layoutX="294.0" layoutY="259.0" prefHeight="25.0" prefWidth="88.0" />
-                              <TextField fx:id="tfFTestRechargeDiscountName" layoutX="14.0" layoutY="259.0" prefHeight="25.0" prefWidth="269.0" />
-                              <Label layoutX="14.0" layoutY="239.0" text="General Discount/Recharge Name" />
-                              <Button layoutX="573.0" layoutY="240.0" mnemonicParsing="false" onAction="#actionFiscalDocumentGeneralDiscountRecharge" prefHeight="46.0" prefWidth="79.0" text="General Discount Recharge" textFill="#3016c6" wrapText="true">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Button>
-                              <ChoiceBox fx:id="cbFTestOperationType" layoutX="131.0" layoutY="137.0" prefHeight="25.0" prefWidth="141.0" />
-                              <ChoiceBox fx:id="cbFTestDocumentType" layoutX="102.0" layoutY="8.0" prefWidth="150.0" />
-                              <Label layoutX="131.0" layoutY="118.0" text="OperationType" />
-                              <ChoiceBox fx:id="cbFTestQualifierPriceOperation" layoutX="281.0" layoutY="137.0" prefHeight="25.0" prefWidth="128.0" />
-                              <Label layoutX="279.0" layoutY="118.0" text="Qualifier Price Type" />
-                              <ChoiceBox fx:id="cbFTestQualifierOperation" layoutX="419.0" layoutY="137.0" prefHeight="25.0" prefWidth="133.0" />
-                              <Label layoutX="419.0" layoutY="118.0" text="Qualifier Operation" />
-                              <Label layoutX="396.0" layoutY="352.0" text="Printing options" />
-                              <ChoiceBox fx:id="cbFTestSubtotalOption" layoutX="396.0" layoutY="367.0" prefHeight="25.0" prefWidth="160.0" />
-                              <Label layoutX="395.0" layoutY="239.0" text="Recharge Operation" />
-                              <ChoiceBox fx:id="cbFTestGeneralAddOperation" layoutX="396.0" layoutY="259.0" prefHeight="25.0" prefWidth="157.0" />
-                              <Label layoutX="395.0" layoutY="300.0" text="Tender Operation" />
-                              <ChoiceBox fx:id="cbFTestTenderOperation" layoutX="395.0" layoutY="317.0" prefHeight="25.0" prefWidth="159.0" />
+                              <Button layoutX="574.0" layoutY="407.0" mnemonicParsing="false" onAction="#actionFiscalDocumentCancel" prefHeight="25.0" prefWidth="80.0" text="Cancel" textFill="#e80000">
+								<font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font></Button>
+                              <Button layoutX="575.0" layoutY="453.0" mnemonicParsing="false" onAction="#actionFiscalDocumentClose" prefHeight="50.0" prefWidth="81.0" text="FINALIZE" textFill="#3016c6">
+								<font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font></Button>
                            </children>
 						</AnchorPane>
                     </content>
@@ -136,14 +138,14 @@
                                     <Font name="System Bold" size="13.0" />
                                  </font></Button>
                               <CheckBox disable="true" layoutX="14.0" layoutY="155.0" mnemonicParsing="false" text="Doble Wide" />
-                              <Button layoutX="571.0" layoutY="292.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentClose" prefHeight="50.0" prefWidth="80.0" text="FINALIZE">
-								<font>
-                                    <Font name="System Bold" size="13.0" />
-                                </font></Button>
                               <Button layoutX="571.0" layoutY="247.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentCancel" prefHeight="25.0" prefWidth="80.0" text="Cancel">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font></Button>
+                              <Button layoutX="571.0" layoutY="292.0" mnemonicParsing="false" onAction="#actionNonFiscalDocumentClose" prefHeight="50.0" prefWidth="80.0" text="FINALIZE">
+								<font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font></Button>
 							  </children>
                         </AnchorPane>
                     </content>
@@ -161,33 +163,33 @@
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font></Button>
+                              <Separator layoutX="-2.0" layoutY="181.0" prefHeight="0.0" prefWidth="688.0" />
                
                               <Label layoutX="22.0" layoutY="188.0" prefHeight="15.0" prefWidth="101.0" text="FISCAL AUDIT" underline="true">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="531.0" layoutY="245.0" mnemonicParsing="false" onAction="#actionAuditSend" prefHeight="39.0" prefWidth="141.0" text="AUDIT SEND">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                                   </font></Button>
-                              <TextField fx:id="tfFiscalAuditNumEnd" layoutX="214.0" layoutY="252.0" prefHeight="23.0" prefWidth="62.0" />
-                              <DatePicker fx:id="dpFiscalAuditDateStart" layoutX="94.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
-                              <DatePicker fx:id="dpFiscalAuditDateEnd" layoutX="216.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
-                              <TextField fx:id="tfFiscalAuditNumStart" layoutX="96.0" layoutY="252.0" prefHeight="23.0" prefWidth="61.0" />
-                              <Separator layoutX="-2.0" layoutY="181.0" prefHeight="0.0" prefWidth="688.0" />
-                              <Label layoutX="96.0" layoutY="232.0" text="start #" />
-                              <Label layoutX="216.0" layoutY="232.0" text="end #" />
-                              <Label layoutX="96.0" layoutY="291.0" text="start" />
-                              <Label layoutX="216.0" layoutY="291.0" text="end" />
                               <RadioButton fx:id="rbFiscalAuditByZ" layoutX="22.0" layoutY="256.0" mnemonicParsing="false" selected="true" text="BY Z">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="BY" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="rbFiscalAuditByDate" layoutX="22.0" layoutY="315.0" mnemonicParsing="false" text="BY DATE" toggleGroup="$BY" />
+                              <Label layoutX="96.0" layoutY="232.0" text="start #" />
+                              <TextField fx:id="tfFiscalAuditNumStart" layoutX="96.0" layoutY="252.0" prefHeight="23.0" prefWidth="61.0" />
+                              <Label layoutX="216.0" layoutY="232.0" text="end #" />
+                              <TextField fx:id="tfFiscalAuditNumEnd" layoutX="214.0" layoutY="252.0" prefHeight="23.0" prefWidth="62.0" />
                               <Label layoutX="365.0" layoutY="232.0" text="Printing options" />
                               <ChoiceBox fx:id="cbReportsPrintingOptions" layoutX="365.0" layoutY="252.0" prefHeight="25.0" prefWidth="139.0" />
+                              <RadioButton fx:id="rbFiscalAuditByDate" layoutX="22.0" layoutY="315.0" mnemonicParsing="false" text="BY DATE" toggleGroup="$BY" />
+                              <Label layoutX="96.0" layoutY="291.0" text="start" />
+                              <DatePicker fx:id="dpFiscalAuditDateStart" layoutX="94.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
+                              <Label layoutX="216.0" layoutY="291.0" text="end" />
+                              <DatePicker fx:id="dpFiscalAuditDateEnd" layoutX="216.0" layoutY="311.0" prefHeight="23.0" prefWidth="97.0" />
+                              <Button layoutX="531.0" layoutY="245.0" mnemonicParsing="false" onAction="#actionAuditSend" prefHeight="39.0" prefWidth="141.0" text="AUDIT SEND">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                                   </font></Button>
                            </children>
                         </AnchorPane>
                     </content>
@@ -197,7 +199,11 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <Button layoutX="582.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionDemoDeviceExit" prefHeight="25.0" prefWidth="61.0" text="EXIT" textFill="#b50808">
+            <Label layoutX="7.0" prefHeight="17.0" prefWidth="94.0" text="Printer Response" textFill="#12078d" />
+            <TextArea fx:id="tfPrinterRequest" editable="false" layoutX="7.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" wrapText="true" />
+            <Label layoutX="297.0" prefHeight="15.0" prefWidth="73.0" text="Printer Status" textFill="#12078d" />
+            <TextArea fx:id="tfPrinterStatus" layoutX="297.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" />
+            <Button layoutX="582.0" layoutY="17.0" mnemonicParsing="false" onAction="#actionPrinterStatus" text="STATUS" textFill="#36608f">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -205,11 +211,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label layoutX="7.0" prefHeight="17.0" prefWidth="94.0" text="Printer Response" textFill="#12078d" />
-            <Label layoutX="297.0" prefHeight="15.0" prefWidth="73.0" text="Printer Status" textFill="#12078d" />
-            <TextArea fx:id="tfPrinterRequest" editable="false" layoutX="7.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" wrapText="true" />
-            <TextArea fx:id="tfPrinterStatus" layoutX="297.0" layoutY="17.0" prefHeight="73.0" prefWidth="275.0" />
-            <Button layoutX="582.0" layoutY="17.0" mnemonicParsing="false" onAction="#actionPrinterStatus" text="STATUS" textFill="#36608f">
+            <Button layoutX="582.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionDemoDeviceExit" prefHeight="25.0" prefWidth="61.0" text="EXIT" textFill="#b50808">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
