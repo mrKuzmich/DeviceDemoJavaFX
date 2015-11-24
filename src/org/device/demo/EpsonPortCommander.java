@@ -266,7 +266,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   public void dailyCloseByDate(Date start, Date end, org.device.demo.TypeSelectItem printingOptions) {
     open();
     try {
-      doCommand(CMD_DAILY_CLOSE_BY_DATE,
+      doCommand(CMD_DAILY_CLOSE_BY_DATE_EXT,
           new byte[] {0x00, (byte)(Controller.AUDIT_PRINTING_OPTIONS.get(0).equals(printingOptions) ? 0x01 : 0x00)},
           dateFormat.format(start), dateFormat.format(end));
     } catch (Exception e) {
