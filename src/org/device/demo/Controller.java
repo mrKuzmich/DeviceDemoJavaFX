@@ -18,6 +18,7 @@ public class Controller {
   static ObservableList<String> comPorts = null;
   final static ObservableList<Integer> baudRates = FXCollections.observableArrayList(
           300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200, 230400);
+  // TODO This and other items controller must get from concrete PortCommander
   public final static ObservableList<TypeSelectItem> MODELS = FXCollections.observableArrayList(
       new TypeSelectItem(EpsonPortCommander.class, "Epson"),
       new TypeSelectItem(HasarPortCommander.class, "Hasar"));
