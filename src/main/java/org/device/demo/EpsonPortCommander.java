@@ -35,6 +35,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   }};
 
   private DocumentOptions documentOptions = null;
+  private boolean isTfCommand = false;
 
   public EpsonPortCommander() {
     super();
@@ -59,7 +60,8 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   }
 
   @Override
-  public void openFiscalDocument(org.device.demo.TypeSelectItem documentType) {
+  public void openFiscalDocument(TypeSelectItem documentType) {
+    setIsTfCommand("A".equals(documentType.getType()) || "B".equals(documentType.getType()));
     open();
     try {
       if (isTfCommand()) {
@@ -67,8 +69,11 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
         // Address of buyer Line 1, Address of buyer Line 2, Address of buyer Line 3
         // Buyer type of document, Number of documents, Responsibility to VAT of the buyer,
         // Lines associated remitos #1, Lines associated remitos #2, Line refund check, for tourist
-        doCommand(CMD_OPEN_TF, new byte[2], documentOptions.getName(), "", documentOptions.getAddress(), "", "",
-            documentTypeMapping.get(documentOptions.getDocument().getType()), documentOptions.getNumber(),
+        doCommand(CMD_OPEN_TF, new byte[2],
+                documentOptions != null ? documentOptions.getName() : "", "",
+                documentOptions != null ? documentOptions.getAddress() : "", "", "",
+                documentOptions != null ? documentTypeMapping.get(documentOptions.getDocument().getType()) : "",
+                documentOptions != null ? documentOptions.getNumber() : "",
             responsibilityMapping.get(documentOptions.getConditionTax().getType()), "", "", "");
       } else
         doCommand(CMD_OPEN_FD_EXT, new byte[]{0, 0});
@@ -276,6 +281,10 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
   }
 
   public boolean isTfCommand() {
-    return documentOptions != null;
+    return isTfCommand;
+  }
+
+  public void setIsTfCommand(boolean isTfCommand) {
+    this.isTfCommand = isTfCommand;
   }
 }
