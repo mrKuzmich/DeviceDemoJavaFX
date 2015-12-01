@@ -1,10 +1,8 @@
 package org.device.demo;
 
-import com.sun.istack.internal.NotNull;
-import com.taliter.fiscal.device.FiscalDevice;
 import com.taliter.fiscal.device.FiscalDeviceSource;
-import com.taliter.fiscal.device.FiscalPacket;
-import com.taliter.fiscal.device.epson.*;
+import com.taliter.fiscal.device.epson.EpsonConstants;
+import com.taliter.fiscal.device.epson.EpsonFiscalDeviceSource;
 import com.taliter.fiscal.port.rxtx.RXTXFiscalPortSource;
 
 import java.text.DecimalFormat;
@@ -14,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by Dmitry on 07.10.2015.
@@ -276,7 +276,7 @@ public class EpsonPortCommander extends PortCommanderImpl implements EpsonConsta
     }
   }
 
-  public void setCustomerData(@NotNull DocumentOptions documentOptions) {
+  public void setCustomerData(@Nonnull DocumentOptions documentOptions) {
     this.documentOptions = documentOptions;
   }
 

@@ -1,13 +1,11 @@
 package org.device.demo;
 
-import com.sun.istack.internal.NotNull;
-import com.taliter.fiscal.device.FiscalDevice;
 import com.taliter.fiscal.device.FiscalDeviceSource;
-import com.taliter.fiscal.device.FiscalPacket;
-import com.taliter.fiscal.device.hasar.*;
+import com.taliter.fiscal.device.hasar.HasarConstants;
+import com.taliter.fiscal.device.hasar.HasarFiscalDeviceSource;
 import com.taliter.fiscal.port.rxtx.RXTXFiscalPortSource;
-import com.taliter.fiscal.util.LoggerFiscalPortSource;
 
+import javax.annotation.Nonnull;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -253,7 +251,7 @@ public class HasarPortCommander extends PortCommanderImpl implements HasarConsta
   }
 
   @Override
-  public void setCustomerData(@NotNull DocumentOptions documentOptions) {
+  public void setCustomerData(@Nonnull DocumentOptions documentOptions) {
     open();
     try {
       doCommand(CMD_SET_CUSTOMER_DATA, truncate(documentOptions.getName(), 45), truncate(documentOptions.getNumber(), 11),

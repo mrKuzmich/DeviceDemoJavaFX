@@ -1,6 +1,5 @@
 package org.device.demo;
 
-import com.sun.istack.internal.Nullable;
 import com.taliter.fiscal.device.FiscalPacket;
 import com.taliter.fiscal.port.rxtx.RXTXFiscalPort;
 import javafx.application.Platform;
@@ -10,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
+import javax.annotation.Nullable;
 import java.sql.Date;
 import java.time.LocalDate;
 

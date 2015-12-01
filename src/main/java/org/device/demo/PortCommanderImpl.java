@@ -3,8 +3,6 @@ package org.device.demo;
 import com.taliter.fiscal.device.FiscalDevice;
 import com.taliter.fiscal.device.FiscalDeviceSource;
 import com.taliter.fiscal.device.FiscalPacket;
-import com.taliter.fiscal.device.epson.EpsonFiscalDeviceSource;
-import com.taliter.fiscal.port.rxtx.RXTXFiscalPortSource;
 import com.taliter.fiscal.util.LoggerFiscalPortSource;
 
 import java.util.Date;

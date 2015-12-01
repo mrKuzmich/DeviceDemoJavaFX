@@ -9,8 +9,12 @@
 
 apply plugin: 'java'
 
-compileJava {
-	classpath = files('lib/RXTXcomm.jar',
-						'../Java-Fiscal-Device-API/build/libs/fiscal-device-1.1.0.jar')
+repositories {
+    mavenCentral()
 }
 
+dependencies {
+    compile files('lib/RXTXcomm.jar',
+						'../Java-Fiscal-Device-API/build/libs/fiscal-device-1.1.0.jar')
+	compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.0'
+}

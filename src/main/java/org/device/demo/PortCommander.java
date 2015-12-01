@@ -1,8 +1,8 @@
 package org.device.demo;
 
-import com.sun.istack.internal.NotNull;
 import com.taliter.fiscal.device.FiscalPacket;
 
+import javax.annotation.Nonnull;
 import java.util.Date;
 
 /**
@@ -56,7 +56,7 @@ public interface PortCommander {
 
   public void dailyCloseByDate(Date start, Date end, TypeSelectItem printingOptions);
 
-  public void setCustomerData(@NotNull DocumentOptions documentOptions);
+  public void setCustomerData(@Nonnull DocumentOptions documentOptions);
 
   public void setRequestListener(org.device.demo.FiscalPacketListener requestListener);
 
